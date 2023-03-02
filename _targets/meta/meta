@@ -141,6 +141,19 @@ hoorwa_data_files|stem|08e09f2900a322ac|68f9b1ea56623216|4310912928424939|114328
 hoorwa_data_plot|stem|7e2ff4d732d8c0db|a7b79b20061368b2|ca959033160d127a|-1661658765||t19412.6774165747s|f4e50caa4f108c8e|434071|rds|local|vector|||0.007||
 hoorwa_stn|stem|efb3c3965c7a1c68|f7eafaacc0fdf739|cb164e350caea7cc|-658818530||t19412.684505869s|9d68b91b65b49305|838|rds|local|vector|||0.041||
 hoorwa_stn_shp|stem|247fa13134fc8a3f|bd49473177c345ec|ab3ea0cf7e4c5a44|1368627401|/Users/jeff/Dropbox/Work/masswildlife/data//hoorwa/stations/stations.shp|t19412.5637445763s|a51f02ce9a36d18d|748|file|local|vector|||0||
+irwa|stem|0feff260358cc730|7f3a60c2a1a3c174|51089a89fe0adc0c|1457571422||t19417.7970847961s|191e42907885d0a4|738429|rds|local|vector|||0.003||
+irwa_howlett|stem|6cbd51d171cc1fe0|0ce442c51d7cd004|8b01f5dccadeb939|1630939580||t19417.7816436111s|96481314446b1d97|387096|rds|local|vector|||0.024||
+irwa_howlett_data|stem|6f7f868da1b34bee|5418c2482e4cc3d3|8ac029c5392b2443|698892392||t19417.6658535904s|f23549b4333bb6f3|370924|rds|local|vector|||0.282||
+irwa_howlett_data_xlsx_files|stem|53b67b6528aa6a87|e8e656c0c57fc9d0|113cdb51d9037a74|424801227|data/irwa/howlett/data/Gravelly Brook.xlsx*data/irwa/howlett/data/Howlett Brook Aaron Drive.xlsx*data/irwa/howlett/data/Howlett Brook East St..xlsx*data/irwa/howlett/data/Howlett Brook Ipswich Rd..xlsx*data/irwa/howlett/data/Howlett Brook North St..xlsx*data/irwa/howlett/data/Potter Brook Plains Rd..xlsx*data/irwa/howlett/data/Potters Brook Wildes Rd..xlsx*data/irwa/howlett/data/Pye Brook Pye Brook Ln..xlsx*data/irwa/howlett/data/Pye Brook Pye Brook Park.xlsx|t19416.8625462963s|f40ecdd17f7529bf|2567112|file|local|vector|||0.413||
+irwa_howlett_stn|stem|42d50cfd92a9e4b6|46adcd5c2007ac3f|0c0a6c5831d7b9b7|-1389206050||t19417.6585679576s|bd229aafaf44870c|557|rds|local|vector|||0.039||
+irwa_howlett_stn_xlsx_file|stem|ddfeb115b9a4cb0b|9dd6cc702472662d|f47bb13d95a320a1|-198234769|data/irwa/howlett/Howlett Monitoring Sites.xlsx|t19416.8721990741s|1dc8705e1c3701b2|10439|file|local|vector|||0.418||
+irwa_ipswich|stem|0dac8c25359ff4b4|720858789bf87397|2fae756681ac86d3|682061671||t19417.7970799703s|f052dbceef2e4b41|356328|rds|local|vector|||0.025||
+irwa_ipswich_data|stem|195480f1280310ed|6f54790e192b14f1|dd2f2d27137a0570|790613872||t19417.7821427975s|18efa99dd2e62432|333963|rds|local|vector|||1.925||
+irwa_ipswich_stn|stem|48c962771cc9abae|6462212b0ad0610d|3bc0e692b66fa02f|-1363641057||t19417.7970786034s|8917fed2537c845f|682|rds|local|vector|||0.026||
+irwa_ipswich_xlsx_file|stem|679d6fe7d6311be6|c63bda2fa17ad26a|f47bb13d95a320a1|-1615800340|data/irwa/ipswich/Ipswich-Parker Continuous Temp. Data.xlsx|t19415.8674537037s|12ce4f7feba9e586|10709931|file|local|vector|||0.421||
+irwa_ipswich_xlsx_raw|stem|33e9687a8cd0d679|6ef97bfa51b2aa15|43e2053da2510642|-1966985733||t19417.7813853643s|c4aa58d09f38fec8|369058|rds|local|vector|||1.111|Expecting date in I16312  R16312C9 got 2 121022 AM. Expecting date in I16313  R16313C9 got 2 122522 AM. Expecting date in I16314  R16314C9 got 2 124022 AM. Expecting date in I16315  R16315C9 got 2 125522 AM. Expecting date in I16316  R16316C9 got 2 11022 AM. Expecting date in I16317  R16317C9 got 2 12522 AM. Expecting date in I16318  R16318C9 got 2 14022 AM. Expecting date in I16319  R16319C9 got 2 15522 AM. Expecting date in I16320  R16320C9 got 2 21022 AM. Expecting date in I16321  R16321C9 got 2 22522 AM. Expecting date in I16322  R16322C9 got 2 24022 AM. Expecting date in I16323  R16323C9 got 2 25522 AM. Expecting date in I16324  R16324C9 got 2 31022 AM. Expecting date in I16325  R16325C9 got 2 32522 AM. Expecting date in I16326  R16326C9 got 2 34022 AM. Expecting date in I16327  R16327C9 got 2 35522 AM. Expecting date in I16328  R16328C9 got 2 41022 AM. Expecting date in I16329  R16329C9 got 2 42522 AM. Expecting date in I16330  R16330C9 got 2 44022 AM. Expecting date in I16331  R16331C9 got 2 45522 AM. Expecting date in I16332  R16332C9 got 2 51022 AM. Expecting date in I16333  R16333C9 got 2 52522 AM. Expecting date in I16334  R16334C9 got 2 54022 AM. Expecting date in I16335  R16335C9 got 2 55522 AM. Expecting date in I16336  R16336C9 got 2 61022 AM. Expecting date in I16337  R16337C9 got 2 62522 AM. Expecting date in I16338  R16338C9 got 2 64022 AM. Expecting date in I16339  R16339C9 got 2 65522 AM. Expecting date in I16340  R16340C9 got 2 71022 AM. Expecting date in I16341  R16341C9 got 2 72522 AM. Expecting date in I16342  R16342C9 got 2 74022 AM. Expecting date in I16343  R16343C9 got 2 75522 AM. Expecting date in I16344  R16344C9 got 2 81022 AM. Expecting date in I16345  R16345C9 got 2 82522 AM. Expecting date in I16346  R16346C9 got 2 84022 AM. Expecting date in I16347  R16347C9 got 2 855|
+irwa_ipswitch|stem|7a7d667f1a4dca33|52bec701d7cc39d2|b532c548917dbe21|355545398||t19417.7816456509s|5bb8f3b225721a50|356265|rds|local|vector|||0.012||
+irwa_ipswitch_data|stem|195480f1280310ed|6f54790e192b14f1|dd2f2d27137a0570|-524949393||t19417.7814099404s|18efa99dd2e62432|333963|rds|local|vector|||2.043||
 nwis_download_temp|function|192eb3fbb0321508|||||||||||||||
 nwis_temp|stem|11f3e7222f3d40a3|e7fa63ae0a1936df|1c6dca8fc9808f80|456160312||t19412.8253432448s|9d11cce482999468|36101805|rds|local|vector|||0.4||
 nwis_temp_data|stem|27c7b85eb5b83d2d|3ef7fad0a2d91dac|b1c200c2043769f2|536846569||t19412.6741553842s|edc513bb996cc216|36210627|rds|local|vector|||1.819||
@@ -197,15 +210,16 @@ targets_crwa|object|f51a8330a81adef4|||||||||||||||
 targets_ecosheds|object|39f593246a474da0|||||||||||||||
 targets_gis|object|15e9e2cb3dd28a00|||||||||||||||
 targets_hoorwa|object|07632a72c9dd320c|||||||||||||||
-targets_nwis|object|9796ecbdf82168df|||||||||||||||
-targets_temp|object|a5655c1ac6b091a0|||||||||||||||
+targets_irwa|object|411945ddeac715cc|||||||||||||||
+targets_nwis|object|8170f638323cf882|||||||||||||||
+targets_temp|object|34f27520ac555be5|||||||||||||||
 targets_wqx|object|c0dae09191d554e2|||||||||||||||
 temp|stem|0159df0b7a257279|12debaa0efc2b811|2a42e01b39c2d69f|1826661658||t19412.6857337686s|97a4083d00dc4d6b|36992664|rds|local|vector|||0.152||
 temp_data|stem|e4efd8ea28174142|9c24ae98ef74e47d|9f8843e97e94ea2a|53087022||t19412.7752438625s|7fbcf6a69ab1b984|37275867|rds|local|vector|||0.156||
-temp_day|stem|7e9d8815250905ca|665e08300174b1ca|ae752a8c3d31e7f5|644178220||t19412.8259049097s|4236f6f678a8705b|8494608|rds|local|vector|||1.402||
+temp_day|stem|589aedc2a1e114e6|665e08300174b1ca|67669e6e8e56d264|644178220||t19417.7972435957s|050ec9bfc4900ae2|8515742|rds|local|vector|||1.378||
 temp_grab|stem|6e977a321477e6c5|4ff7874e70321cce|56440c78c9e133cc|-1043446425||t19412.8242794032s|ac97c72282b06edb|525378|rds|local|vector|||0.001||
-temp_inst|stem|589c8e7cfabdee0e|cd1bcc9593fae347|bbce8f448c859ba0|237064427||t19412.8254811724s|1f9408bde5cc60a3|36616917|rds|local|vector|||0.076||
-temp_plot_period|stem|e14d80fec5ec10bb|35a3c86e06bc007b|f8d36804174ad40d|1914515392||t19412.8259540056s|f1a4df3685369ef5|16935596|rds|local|vector|||0.386||
+temp_inst|stem|9df13266f1b6770d|de5a4de8e5f22ed7|fbc7cb0fda3abde4|237064427||t19417.7972111001s|da74570fbb420eac|37377055|rds|local|vector|||0.092||
+temp_plot_period|stem|276a715fe2b0766b|35a3c86e06bc007b|23be10468c39fc65|1914515392||t19417.7972734447s|c573940e7ed0bd05|16982860|rds|local|vector|||0.246||
 wqx|stem|6e977a321477e6c5|f7811fb0af4162ae|e7ded6675e953300|1927348781||t19412.6848341273s|ac97c72282b06edb|525378|rds|local|vector|||0.024||
 wqx_characteristics|stem|1e5f807742188ee1|3e6a61d40016184f|a3dad144c40657ed|2000931681||t19412.6034792582s|0e696b453c03de61|85|rds|local|vector|||0.514||
 wqx_data|stem|8b0735405e84a2c3|5c3ef832655e3551|4de43ad9d721a9a5|753412111||t19412.6698788092s|3dab8e6aca2743c8|567323|rds|local|vector|||0.206||

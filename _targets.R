@@ -16,6 +16,7 @@ list(
   tar_target(data_dir, "/Users/jeff/Dropbox/Work/masswildlife/data/"),
   targets_crwa,
   targets_hoorwa,
+  targets_irwa,
   targets_wqx,
   targets_nwis,
   targets_ecosheds,

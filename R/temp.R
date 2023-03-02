@@ -1,8 +1,6 @@
 targets_temp <- list(
   tar_target(temp_grab, bind_rows(wqx)),
-  tar_target(temp_inst, {
-    bind_rows(hoorwa, crwa, nwis_temp)
-  }),
+  tar_target(temp_inst, bind_rows(hoorwa, crwa, irwa, nwis_temp)),
   tar_target(temp_day, {
     temp_inst |>
       rowwise() |>
