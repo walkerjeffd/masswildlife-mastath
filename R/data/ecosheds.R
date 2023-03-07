@@ -62,7 +62,7 @@ left join agencies a on l.agency_id=a.id;"
       st_filter(filter(gis_states, stusps == "MA")) |>
       mutate(
         longitude = st_coordinates(geometry)[,1],
-        latitude = st_coordinates(geometry)[,1]
+        latitude = st_coordinates(geometry)[,2]
       ) |>
       st_drop_geometry()
   }),
