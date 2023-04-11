@@ -11,8 +11,8 @@ temp_day |>
   arrange(source, provider) |>
   mutate(provider = fct_inorder(provider)) |>
   tabyl(provider, source) |>
-  adorn_totals(where = "row") |>
-  write_csv("~/count-provider-source.csv")
+  adorn_totals(where = "row")
+  # write_csv("~/count-provider-source.csv")
 
 # map of stations, color by source, size by n
 temp_day |>
@@ -75,9 +75,9 @@ x |>
   labs(x = "Day of Year", y = "Daily Mean Temp (C)") +
   theme_bw()
 
-# distribution of max july by station-year
+# distribution of max summer by station-year
 x |>
-  filter(month(date) == 7) |>
+  filter(month(date) %in% 7:8) |>
   group_by(provider, source, station_id, strata, year = year(date)) |>
   summarise(
     `max(mean_temp_c)` = max(mean_temp_c),
@@ -86,14 +86,14 @@ x |>
   ggplot(aes(`max(mean_temp_c)`)) +
   stat_ecdf(pad = FALSE) +
   scale_y_continuous("Cumul. Percentile", labels = scales::percent_format(accuracy = 1), breaks = scales::pretty_breaks(n = 10), expand = expansion(), limits = c(0, 1)) +
-  scale_x_continuous("July Max(mean daily) Temp (C)", breaks = scales::pretty_breaks(n = 10)) +
+  scale_x_continuous("July/Aug Max(mean daily) Temp (C)", breaks = scales::pretty_breaks(n = 10)) +
   coord_cartesian(xlim = c(10, 30)) +
   theme_bw()
 
 
-# annual timeseries of max july temp
+# annual timeseries of max july-aug temp
 x |>
-  filter(month(date) == 7) |>
+  filter(month(date) %in% 7:8) |>
   group_by(provider, source, station_id, strata, year = year(date)) |>
   summarise(
     `max(mean_temp_c)` = max(mean_temp_c),
@@ -104,19 +104,19 @@ x |>
   geom_line(aes(group = interaction(provider, source, station_id)), alpha = 0.5) +
   geom_point(size = 1, alpha = 0.5) +
   scale_x_continuous("Year", breaks = scales::pretty_breaks(n = 12)) +
-  scale_y_continuous("July Max(mean daily) Temp (C)", breaks = scales::pretty_breaks(n = 10)) +
+  scale_y_continuous("July/Aug Max(mean daily) Temp (C)", breaks = scales::pretty_breaks(n = 10)) +
   theme_bw()
 
 # map of long-term mean(max july temp)
 x |>
-  filter(month(date) == 7) |>
+  filter(month(date) %in% 7:8) |>
   distinct() |>
   group_by(provider, source, station_id, strata, year = year(date)) |>
   summarise(
     `max(mean_temp_c)` = max(mean_temp_c),
     .groups = "drop_last"
   ) |>
-  filter(`max(mean_temp_c)` > 0) |>
+  filter(`max(mean_temp_c)` > 10) |>
   summarise(
     `mean(max(mean_temp_c))` = mean(`max(mean_temp_c)`),
     .groups = "drop"

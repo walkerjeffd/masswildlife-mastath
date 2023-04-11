@@ -10,7 +10,7 @@ nwis_download_temp <- function (stations, startDate = "1980-01-01", endDate = "2
     as_tibble()
 }
 
-targets_nwis <- list(
+targets_nwis_temp <- list(
   tar_target(nwis_temp_stn_raw, {
     dataRetrieval::whatNWISsites(
       stateCd = "ma",
