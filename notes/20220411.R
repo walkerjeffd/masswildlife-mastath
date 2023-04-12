@@ -235,3 +235,16 @@ for (i in seq(1, nrow(flow_nearest_temp_data), by = 9)) {
   print(p)
 }
 dev.off()
+
+
+# miller2018 --------------------------------------------------------------
+
+x <- read_csv("~/Dropbox/Work/masswildlife/data/miller2018/8.1.7/10103814.csv")
+
+x |>
+  mutate(Date = ymd(str_c(Year, Month, 1, sep = "-"))) |>
+  pivot_longer(-c(COMID, AREA, Year, Month, Date)) |>
+  filter(name %in% c("P50_Q", "Estimated.Q")) |>
+  ggplot(aes(Date, value)) +
+  geom_line(aes(color = name)) +
+  scale_color_brewer(palette = "Set1")
