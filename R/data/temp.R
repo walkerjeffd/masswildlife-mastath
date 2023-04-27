@@ -1,12 +1,16 @@
 targets_temp <- list(
   tar_target(temp_grab, bind_rows(wqx)),
-  tar_target(temp_inst, bind_rows(hoorwa, crwa, irwa, nwis_temp)),
+  tar_target(temp_inst, bind_rows(hoorwa, crwa, irwa, nwis_temp, pie_lter_temp)),
   tar_target(temp_day, {
     temp_inst |>
       rowwise() |>
       mutate(
         data = list({
-          data |>
+          x <- data
+          if (!"strata" %in% names(x)) {
+            x$strata <- NA_character_
+          }
+          x |>
             group_by(strata, date = as_date(datetime)) |>
             summarise(
               n_values = n(),

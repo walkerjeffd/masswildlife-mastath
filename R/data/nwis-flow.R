@@ -42,7 +42,7 @@ targets_nwis_flow <- list(
         flow_flag = Flow_cd
       )
   }),
-  tar_target(nwis_flow, {
+  tar_target(nwis_flow_day, {
     nwis_flow_stn |>
       mutate(
         source = "NWIS-dv",
