@@ -3,6 +3,7 @@ library(targets)
 # load all targets
 invisible(sapply(list.files("R", pattern = ".R$", full.names = TRUE), source))
 invisible(sapply(list.files("R/data", pattern = ".R$", full.names = TRUE), source))
+invisible(sapply(list.files("R/memo", pattern = ".R$", full.names = TRUE), source))
 
 options(tidyverse.quiet = TRUE)
 tar_option_set(packages = c("tidyverse", "janitor", "sf", "units", "glue", "patchwork"))
@@ -21,11 +22,15 @@ list(
   targets_ecosheds,
   targets_pie_lter,
   targets_hrf,
+  targets_neon,
   targets_nwis_temp,
   targets_nwis_flow,
 
   targets_temp,
   targets_flow,
+  targets_obs,
+
+  targets_memo_data,
 
   targets_gis
 )

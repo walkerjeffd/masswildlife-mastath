@@ -45,7 +45,7 @@ targets_nwis_flow <- list(
   tar_target(nwis_flow_day, {
     nwis_flow_stn |>
       mutate(
-        source = "NWIS-dv",
+        source = "USGS-NWIS",
         provider = "USGS",
         .before = everything()
       ) |>

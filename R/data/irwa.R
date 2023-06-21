@@ -8,7 +8,7 @@ targets_irwa <- list(
       transmute(
         station_id = site,
         name = water_body,
-        description = site_description,
+        # description = site_description,
         type = "stream",
         latitude,
         longitude
@@ -52,7 +52,7 @@ targets_irwa <- list(
       distinct(
         station_id,
         name = water_body,
-        description = station_description,
+        # description = station_description,
         type = "stream",
         latitude,
         longitude

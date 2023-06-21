@@ -1,5 +1,5 @@
 targets_flow <- list(
-  tar_target(flow_day, bind_rows(nwis_flow_day, pie_lter_flow_day, hrf_flow_day)),
+  tar_target(flow_day, bind_rows(nwis_flow_day, pie_lter_flow_day, hrf_flow_day, neon_flow_day)),
   tar_target(flow_plot_period, {
     flow_day |>
       rowwise() |>

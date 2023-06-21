@@ -46,12 +46,12 @@ targets_nwis_temp <- list(
       ) |>
       pivot_longer(-c(station_id, datetime), names_to = "strata", names_pattern = "(.*)_Wtemp_Inst", values_to = "temp_c", values_drop_na = TRUE) |>
       mutate(strata = na_if(strata, "NA")) |>
-      relocate(strata, .after = "temp_c")
+      relocate(strata, .before = "datetime")
   }),
   tar_target(nwis_temp, {
     nwis_temp_stn |>
       mutate(
-        source = "NWIS-uv",
+        source = "USGS-NWIS",
         provider = "USGS",
         .before = everything()
       ) |>

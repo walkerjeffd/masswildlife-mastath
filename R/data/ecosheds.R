@@ -1,4 +1,4 @@
-tar_option_set(packages = c("tidyverse", "janitor", "units", "sf"))
+tar_option_set(packages = c("tidyverse", "janitor", "units", "sf", "bit64"))
 
 ecosheds_connect <- function () {
   dotenv::load_dot_env()
@@ -74,10 +74,38 @@ left join agencies a on l.agency_id=a.id;"
   }),
   tar_target(ecosheds, {
     ecosheds_stn |>
-      mutate(source = "EcoSHEDS", .before = everything()) |>
+      mutate(
+        station_id = glue::glue("{station_id} [{ecosheds_id}]"),
+        source = "EcoSHEDS", .before = everything()
+      ) |>
       left_join(
         nest_by(ecosheds_data, ecosheds_id),
         by = "ecosheds_id"
+      ) |>
+      select(-ecosheds_id)
+  }),
+  tar_target(ecosheds_day, {
+    ecosheds |>
+      rowwise() |>
+      mutate(
+        data = list({
+          data |>
+            filter(!flagged)
+        })
+      ) |>
+      filter(nrow(data) > 0) |>
+      mutate(
+        data = list({
+          data |>
+            group_by(date) |>
+            summarise(
+              n_series = n(),
+              n_values = as.integer(sum(n_values)),
+              min_temp_c = min(min_temp_c),
+              mean_temp_c = mean(mean_temp_c),
+              max_temp_c = max(max_temp_c)
+            )
+        })
       )
   })
 )

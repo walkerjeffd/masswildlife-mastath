@@ -1,6 +1,6 @@
 targets_temp <- list(
   tar_target(temp_grab, bind_rows(wqx)),
-  tar_target(temp_inst, bind_rows(hoorwa, crwa, irwa, nwis_temp, pie_lter_temp)),
+  tar_target(temp_inst, bind_rows(hoorwa, crwa, irwa, nwis_temp, pie_lter_temp, hrf_temp)),
   tar_target(temp_day, {
     temp_inst |>
       rowwise() |>
@@ -21,7 +21,7 @@ targets_temp <- list(
             )
         })
       ) |>
-      bind_rows(ecosheds)
+      bind_rows(ecosheds_day, neon_temp_day)
   }),
   tar_target(temp_plot_period, {
     temp_day |>
