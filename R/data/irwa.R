@@ -34,9 +34,11 @@ targets_irwa <- list(
   }),
   tar_target(irwa_howlett, {
     irwa_howlett_stn |>
-      left_join(
+      inner_join(
         irwa_howlett_data |>
-          nest_by(station_id)
+          nest_by(station_id) |>
+          filter(station_id != "HB"),
+        by = "station_id"
       )
   }),
   tar_target(irwa_ipswich_xlsx_file, file.path("data", "irwa", "ipswich", "Ipswich-Parker Continuous Temp. Data.xlsx"), format = "file"),
@@ -76,9 +78,12 @@ targets_irwa <- list(
   }),
   tar_target(irwa_ipswich, {
     irwa_ipswich_stn |>
-      left_join(
+      inner_join(
         irwa_ipswich_data |>
-          nest_by(station_id)
+          bind_rows(filter(irwa_howlett_data, station_id == "HB")) |>
+          arrange(station_id, datetime) |>
+          nest_by(station_id),
+        by = "station_id"
       )
   }),
   tar_target(irwa, {

@@ -59,18 +59,24 @@ left join agencies a on l.agency_id=a.id;"
   tar_target(ecosheds_stn_filtered, {
     ecosheds_stn_all |>
       st_as_sf(coords = c("longitude", "latitude"), crs = 4326) |>
-      st_filter(filter(gis_states, stusps == "MA")) |>
       mutate(
         longitude = st_coordinates(geometry)[,1],
         latitude = st_coordinates(geometry)[,2]
       ) |>
+      st_transform(crs = crs_ma_state_plane) |>
+      st_filter(gis_state) |>
       st_drop_geometry()
   }),
   tar_target(ecosheds_stn_grouped, group_stations(ecosheds_stn_filtered$ecosheds_id, max_stations = 10), iteration = "group"),
-  tar_target(ecosheds_data, ecosheds_download(ecosheds_stn_grouped), pattern = map(ecosheds_stn_grouped)),
+  # tar_target(ecosheds_data, ecosheds_download(ecosheds_stn_grouped), pattern = map(ecosheds_stn_grouped)),
+  tar_target(ecosheds_data_file, "data/ecosheds.rds", format = "file"),
+  tar_target(ecosheds_data, read_rds(ecosheds_data_file)),
   tar_target(ecosheds_stn, {
     ecosheds_stn_filtered |>
-      filter(ecosheds_id %in% ecosheds_data$ecosheds_id)
+      filter(
+        ecosheds_id %in% ecosheds_data$ecosheds_id,
+        !str_starts(name, "Air Temp")
+      )
   }),
   tar_target(ecosheds, {
     ecosheds_stn |>

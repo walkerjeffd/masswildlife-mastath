@@ -78,7 +78,7 @@ x |>
 # distribution of max summer by station-year
 x |>
   filter(month(date) %in% 7:8) |>
-  group_by(provider, source, station_id, strata, year = year(date)) |>
+  group_by(provider, source, station_id, year = year(date)) |>
   summarise(
     `max(mean_temp_c)` = max(mean_temp_c),
     .groups = "drop"
@@ -94,7 +94,7 @@ x |>
 # annual timeseries of max july-aug temp
 x |>
   filter(month(date) %in% 7:8) |>
-  group_by(provider, source, station_id, strata, year = year(date)) |>
+  group_by(provider, source, station_id, year = year(date)) |>
   summarise(
     `max(mean_temp_c)` = max(mean_temp_c),
     .groups = "drop"
@@ -111,7 +111,7 @@ x |>
 x |>
   filter(month(date) %in% 7:8) |>
   distinct() |>
-  group_by(provider, source, station_id, strata, year = year(date)) |>
+  group_by(provider, source, station_id, year = year(date)) |>
   summarise(
     `max(mean_temp_c)` = max(mean_temp_c),
     .groups = "drop_last"

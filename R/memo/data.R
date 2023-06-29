@@ -1,15 +1,34 @@
 tar_option_set(packages = c("tidyverse", "janitor", "sf", "units", "glue", "patchwork"))
 
 targets_memo_data <- list(
+  tar_target(memo_data_obs, {
+    bind_rows(
+      flow = flow_day,
+      temp = temp_day,
+      .id = "dataset"
+    ) |>
+      rowwise() |>
+      mutate(
+        data = list({
+          data |>
+            filter(year(date) >= 1994, year(date) <= 2022)
+        })
+      ) |>
+      filter(nrow(data) > 0) |>
+      arrange(source) |>
+      mutate(
+        source = fct_inorder(source)
+      )
+  }),
   tar_target(memo_data_tbl_obs_tally_file, {
     filename <- "memo/data/obs-tally.csv"
-    obs_day |>
+    memo_data_obs |>
       tabyl(source, dataset) |>
       write_csv(filename)
     filename
   }, format = "file"),
   tar_target(memo_data_fig_map_stn, {
-    x <- obs_day |>
+    x <- memo_data_obs |>
       rowwise() |>
       mutate(
         n_year = length(unique(year(data$date)))
@@ -46,7 +65,7 @@ targets_memo_data <- list(
     filename
   }, format = "file"),
   tar_target(memo_data_obs_tally_year, {
-    obs_day |>
+    memo_data_obs |>
       filter(nrow(data) > 0) |>
       rowwise() |>
       mutate(
@@ -98,14 +117,14 @@ targets_memo_data <- list(
     # NAD83 / Massachusetts Mainland
     # https://epsg.io/26986
     # meters
-    sf_flow <- obs_day |>
+    sf_flow <- memo_data_obs |>
       ungroup() |>
       filter(dataset == "flow") |>
       select(-dataset) |>
       rename_with(\(x) str_c("flow_", x), -c(latitude, longitude)) |>
       st_as_sf(coords = c("longitude", "latitude"), crs = 4326) |>
       st_transform(crs = 26986)
-    sf_temp <- obs_day |>
+    sf_temp <- memo_data_obs |>
       ungroup() |>
       filter(dataset == "temp") |>
       select(-dataset) |>

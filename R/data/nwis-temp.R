@@ -39,14 +39,9 @@ targets_nwis_temp <- list(
       select(
         station_id = site_no,
         datetime = dateTime,
-        NA_Wtemp_Inst = Wtemp_Inst,
-        TOP_Wtemp_Inst,
-        BOTTOM_Wtemp_Inst,
-        GATE.HOUSE_Wtemp_Inst
+        temp_c = Wtemp_Inst
       ) |>
-      pivot_longer(-c(station_id, datetime), names_to = "strata", names_pattern = "(.*)_Wtemp_Inst", values_to = "temp_c", values_drop_na = TRUE) |>
-      mutate(strata = na_if(strata, "NA")) |>
-      relocate(strata, .before = "datetime")
+      filter(!is.na(temp_c))
   }),
   tar_target(nwis_temp, {
     nwis_temp_stn |>
@@ -55,7 +50,7 @@ targets_nwis_temp <- list(
         provider = "USGS",
         .before = everything()
       ) |>
-      left_join(
+      inner_join(
         nest_by(nwis_temp_data, station_id),
         by = "station_id"
       )

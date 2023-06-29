@@ -6,12 +6,8 @@ targets_temp <- list(
       rowwise() |>
       mutate(
         data = list({
-          x <- data
-          if (!"strata" %in% names(x)) {
-            x$strata <- NA_character_
-          }
-          x |>
-            group_by(strata, date = as_date(datetime)) |>
+          data |>
+            group_by(date = as_date(datetime)) |>
             summarise(
               n_values = n(),
               min_temp_c = min(temp_c),

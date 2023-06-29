@@ -4,9 +4,10 @@ library(targets)
 invisible(sapply(list.files("R", pattern = ".R$", full.names = TRUE), source))
 invisible(sapply(list.files("R/data", pattern = ".R$", full.names = TRUE), source))
 invisible(sapply(list.files("R/memo", pattern = ".R$", full.names = TRUE), source))
+invisible(sapply(list.files("R/nhd", pattern = ".R$", full.names = TRUE), source))
 
 options(tidyverse.quiet = TRUE)
-tar_option_set(packages = c("tidyverse", "janitor", "sf", "units", "glue", "patchwork"))
+tar_option_set(packages = c("tidyverse", "janitor", "sf", "units", "glue", "patchwork", "arrow", "tidymodels"))
 
 # load packages into session
 if (interactive()) {
@@ -28,9 +29,22 @@ list(
 
   targets_temp,
   targets_flow,
+
+  targets_gis,
+  targets_nhdplusv2,
+  targets_nhdplusv2_prism,
+  targets_nhdplusv2_attrs,
+  targets_nhdplushr,
+  targets_streamstats,
+  targets_daymet,
+  targets_climate,
+
   targets_obs,
+  targets_inp,
 
-  targets_memo_data,
+  targets_lom,
+  targets_xgb,
+  targets_reg
 
-  targets_gis
+  # targets_memo_data
 )
