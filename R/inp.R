@@ -72,6 +72,7 @@ targets_inp <- list(
           data |>
             group_by(year = year(date), week = week(date)) |>
             summarise(
+              median_n_values_day = median(n_values),
               n_values = sum(n_values),
               n_days = n(),
               mean_temp_c = mean(mean_temp_c),

@@ -1,4 +1,10 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+app_basins|stem|13c57c1fc55e648b|2755f40130eadd7b|2233ccfc87a38d65|1713121144||t19537.9911699034s|49780b29886dbdde|3298492|rds|local|vector|||2.442||
+app_basins_file|stem|76e761569ef27b25|8464ae7e1d7cd70b|716362ca6d8dc62e|-739594472|data/app/basins.geojson|t19537.9911761405s|e9edaa2a2ddc2ef2|9074052|file|local|vector|||0.533||
+app_dataset|stem|5778ad879361bb04|5b8be32c2013ed1c|75c3bc44e6b5a212|1098481977||t19537.8366341118s|22d94780f0f9ff40|1363861|rds|local|vector|||0.043||
+app_dir|stem|719ad453f4e5ee31|78b79607493a4862|ef46db3751d8e999|-1685120811||t19537.7790890468s|8a2d295a6f6be5b7|61|rds|local|vector|||0||
+app_flowlines|stem|25f31913fedaa149|034d8853949ca180|7a6860545c64f299|297148381||t19537.8375759523s|be03e0cf35527f5b|2564666|rds|local|vector|||0.14||
+app_flowlines_file|stem|f82e1cedfc8bd4e0|902f5ea02216fa40|156d11b08f000eac|1856150437|data/app/flowlines.geojson|t19537.8386450477s|c048de407736ca88|8845333|file|local|vector|||0.491||
 change_units|function|e9ccfc32e7959a75|||||||||||||||
 climate_basins|stem|9f28e2b2e56679ad|fdd7b127288faced|04a3fc9d5bc9bd98|-1283382541||t19536.8819014296s|7c0ee4201d2f7db8|496|rds|local|vector|||0.002||
 climate_huc8|stem|a5ef6c784b3db380|acd1f846ac46778c|94d5681a284cd67f|1981294985||t19536.9042143259s|171a872d99f56bfa|10850280|rds|local|vector|||2.451||
@@ -7,7 +13,7 @@ climate_huc8_flowline|stem|d7e0de0fd94634cb|cde8a5f0058aab38|6b1431b55687ce6c|-1
 climate_huc8_simp|stem|79af64c7c6f8edfd|3c50237725caab5d|9caf6647400c3e56|1732581644||t19536.9085133038s|a4d6db0759061886|1995774|rds|local|vector|||2.38||
 climate_proj|stem|a9fa24b45d678756|743fc0d5f7b9f013|5a926cd876dfba87|1433344690||t19536.8092573232s|84aaf48f0f3b0496|2712|rds|local|vector|||0.177||
 climate_proj_file|stem|b0d48dc758f44fa6|531c1b862f209ac2|ef46db3751d8e999|131066151|data/climate/Climate_Projections_Dataset_Hub.xlsx|t19536.7847267798s|559e6dd21081c9c5|509729|file|local|vector|||0||
-climate_proj_plot|stem|a0e6d0c2c80d7c63|70f75f5fbf1faf45|b6064f223a184164|-2020664586||t19536.8092578961s|8ab270f8556af162|81085|rds|local|vector|||0.021||
+climate_proj_plot|stem|eec81516464c7494|b8aff895baee9d95|a337ed9929958643|-2020664586||t19537.7786473373s|3a41150e35ba7562|155482|rds|local|vector|||0.046||
 crs_ma_state_plane|stem|b3694e2926ba4949|e98a31c6f37e28bb|ef46db3751d8e999|1818565391||t19534.749844295s|c9aaea90a821e608|53|rds|local|vector|||0.513||
 crwa|stem|d68d64f13bd53722|5548ac03ebc70121|7a90f19082d5b964|-1976317110||t19412.8241415276s|b73b6a4a36dab07e|282267|rds|local|vector|||0.008||
 crwa_data|stem|bb2a8698dcb27bfe|b0f4304f5fa17d99|a95eb5a57c54b40d|-1510613783||t19412.7751110109s|f6ff5a3fcf56defa|268815|rds|local|vector|||0.017||
@@ -150,6 +156,19 @@ ecosheds_stn|stem|a10cf8935c279071|766638fb8525e393|e4241db13069fb39|-1142732940
 ecosheds_stn_all|stem|3a0fd5f6db76fbd1|5e362c28da152108|b0298d0f107979be|1637143464||t19412.7843380188s|0421d9a23c5569bd|295763|rds|local|vector|||1.238||
 ecosheds_stn_filtered|stem|0d33ae2229e67e20|e30c35fd16fb3098|bb41bc5eaab3d34e|-99591757||t19534.7557314636s|7e8507059498abec|46697|rds|local|vector|||0.069||
 ecosheds_stn_grouped|stem|e9c4cd21ce9a6d94|b36d213b5503ddc5|873330cf77fa92da|-1701768481||t19534.8525999152s|69aca1bd1ee4eff2|3339|rds|local|group|||0.014||
+export_flowlines|stem|126a2882d49f50c9|16340da75e27a3be|2041217b0246e0b9|-1449423041||t19538.6148735968s|2ab4b9a24feb455e|4109118|rds|local|vector|||1.661||
+export_flowlines_csv_file|stem|7f203b770970e92c|c08689633f85185b|a74d991f37901e21|-1616690188|data/export/mastath-output.csv|t19549.7667836048s|e6fc62afa13de274|5626332|file|local|vector|||0.019||
+export_flowlines_file|stem|8fe17c902b0aed62|33857a8693bf632d|79347adf291739f0|-1584441972|data/export/mastath-flowlines.gpkg|t19538.6148768099s|1ea46e1f2bd5c828|10629120|file|local|vector|||0.274||
+export_flowlines_gpkg_file|stem|09b0da3a99369b53|33857a8693bf632d|79347adf291739f0|-1734347492|data/export/mastath-flowlines.gpkg|t19538.8482185971s|1ea46e1f2bd5c828|10629120|file|local|vector|||0.235||
+export_flowlines_shp_file|stem||f293657e5904f25f|79347adf291739f0|1331816494||t19538.8436647279s||0|file|local|vector|||0.04|Field names abbreviated for ESRI Shapefile driver. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_WA to TOT_NLCD11. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_DEV_O to TOT_NLCD_1. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_DEV_L to TOT_NLCD_2. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_DEV_M to TOT_NLCD_3. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_DEV_H to TOT_NLCD_4. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_DEV_T to TOT_NLCD_5. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_B to TOT_NLCD_6. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_F to TOT_NLCD_7. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_S to TOT_NLCD_8. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_G to TOT_NLCD_9. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_AGRI_H to TOT_NLCD10. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_AGRI_C to TOT_NLCD12. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_AGRI_T to TOT_NLCD13. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_WE to TOT_NLCD14. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_RIP50_WA to TOT_NLCD15. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_RIP50_DEV_O to TOT_NLCD16. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_RIP50_DEV_L to TOT_NLCD17. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_RIP50_DEV_M to TOT_NLCD18. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_RIP50_DEV_H to TOT_NLCD19. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_RIP50_DEV_T to TOT_NLCD20. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_RIP50_B to TOT_NLCD21. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_RIP50_F to TOT_NLCD22. GDAL Message 6 Normalizedlaundered field name TOT_NLCD11_RIP50_S to TOT_NLCD23. GDAL Message 6 Normal|Write error
+export_gpkg|stem|932f64095fdbcfae|c10f8f4d2096ce15|547d26fa7dcf6392|-2063992054||t19538.5803718681s|c5a3d223a256156a|4234990|rds|local|vector|||1.658||
+export_gpkg_file|stem|a89e5d4ffac760e5|a80df4523ec8bdce|397d9cf43c9e5bc7|285337375|data/export/mastath.gpkg|t19538.5803742549s|f43c7d96eda11a59|9883648|file|local|vector|||0.201||
+export_obs_day|stem|689eb5f197507dbc|bcef77b2040085f3|246d3ae17cd8689a|765916314||t19549.781165766s|d634db545f3bb87f|8394732|rds|local|vector|||0.316||
+export_obs_day_file|stem|bcb27a58f173c9ac|3ef183deba0de9e1|054f6b654f1488b1|-579417573|data/export/mastath-obs-day.csv|t19538.8482149309s|faecdab933010d12|66845012|file|local|vector|||0.902||
+export_obs_stn|stem|572f96a158916fa9|29d62d791958afff|a30a043b7b2384e5|-1393521029||t19549.7811468947s|3635386f13bd4907|20653|rds|local|vector|||0.009||
+export_obs_stn_file|stem|4013f7a5a96590f0|b9d72f5cfebfd4a4|b2521989008d2d34|1360745325|data/export/mastath-obs-stn.csv|t19549.7678151302s|3b29c654218f6627|48697|file|local|vector|||0.056||
+export_obs_week|stem|6001a40aebcc9c32|4337dd1fd8ce5d4f|f1da0afb4c3b9563|124241922||t19549.7756187256s|d7fde4cb2111f069|714244|rds|local|vector|||1.333||
+export_obs_week_file|stem|1aaa8f3aa18c0e9b|225e44300ae8390a|4e70d010d8f09be3|-8767960|data/export/mastath-obs-week.csv|t19549.7756203132s|a5afbaf8f287eb00|6480738|file|local|vector|||0.136||
 extract_daymet|function|59978e30ae3494f4|||||||||||||||
 fit_lom|function|6929109e16ea9c28|||||||||||||||
 fit_lom3|function|f114fbf283d39192|||||||||||||||
@@ -187,15 +206,16 @@ hrf_stn|stem|9f1411200c055915|41becdbf46ed2827|8c9126841394d1fe|1996558023||t194
 hrf_stn_file|stem|d94f0b4c5f205d1a|d900452d33a0f0d5|ab3ea0cf7e4c5a44|845308842|/Users/jeff/Dropbox/Work/masswildlife/data//hrf/hf375-03-points/ltstudy-points-apr10.shp|t18831.9361111111s|c5f2f89e75872095|3544|file|local|vector|||0||
 hrf_temp|stem|2981f911090ece69|1099e79cce5b9963|e48a5f0052b36d33|-61230259||t19485.6603710672s|ade4fdecff45b1db|7614629|rds|local|vector|||0.031||
 inp_day|stem|9a369b0bacda229b|90e6b18a28a034c1|d1da369f7da264e4|954602451||t19535.091583864s|f2dd14a4fce045cc|12164257|rds|local|vector|||3.355||
-inp_week|stem|1d312ab917113beb|2435f1ba7339f3ac|3d7b4b3c2ad8e0fd|264716381||t19535.9311545532s|4220f61c07169aa0|1073219|rds|local|vector|||5.853||
+inp_day_plot_seas|stem|21710b99188ae0c3|b4bbbbda2e35f322|43d956e6db6e4bdd|-841510185||t19537.7787396323s|1210c5d4bacfa4db|22273552|rds|local|vector|||0.165||
+inp_week|stem|ff9dd195feae811e|a00f1b419342dcd6|fa355337a2caee2f|264716381||t19549.7715044554s|ddd14324b43f666c|1105967|rds|local|vector|||6.833||
 inp_week_map|stem|c8b7355d3dcad45e|cf6dc258223a207e|4fc86d3991f0de8b|-876696406||t19535.971007922s|42620f2fc8bae06e|1538106|rds|local|vector|||0.037||
-inp_week_map_exclude|stem|c8b7355d3dcad45e|cf6dc258223a207e|4fc86d3991f0de8b|1711474732||t19535.9711490769s|42620f2fc8bae06e|1538106|rds|local|vector|||0.036||
-inp_week_plot_range|stem|fec6abbe91db9355|fbd5ef47dd8fa812|4346c38e52f8e52b|-531195532||t19535.9527880703s|9aaa378c3a058901|2266518|rds|local|vector|||0.021||
-inp_week_plot_seas|stem|f607e81e889322a2|6b5a2d4aa1a2a38d|949c7c00aede6fcd|-1884085488||t19535.9527916671s|688f16808be47f02|2014789|rds|local|vector|||0.01||
-inp_week_plot_splot|stem|694b72882b2a85fa|5451de1ffa1384cc|7001f77ad040d3b6|-848641094||t19535.9366169659s|9808c74577489339|43186622|rds|local|vector|||0.126||
-inp_week_plot_summer|stem|4b0b99073d13960b|cc4d026fe42c0ec4|6ba0c2698b930c9f|-1234962551||t19535.9323572423s|a06d3945bceca325|2041096|rds|local|vector|||0.031||
-inp_week_plot_summer_frac|stem|aa4ac93cfdb9f3a1|8c2467ca11c2bffa|e90628ded3f45630|448285361||t19535.9327938695s|330720b1a3953f7e|2199488|rds|local|vector|||0.022||
-inp_week_plot_ts|stem|737b3f394f949744|d329e6d6f2f0640d|1b1360fdc10e47e1|-706873573||t19535.9527952975s|f656a6561309045a|2011649|rds|local|vector|||0.01||
+inp_week_map_exclude|stem|e581b749a7bed1e2|cf6dc258223a207e|39e893af07a23fb4|1711474732||t19549.7798716652s|31c171afed512b1a|1570700|rds|local|vector|||0.029||
+inp_week_plot_range|stem|528a8c9d05e6d2ed|fbd5ef47dd8fa812|8c6d909e6cc228c2|-531195532||t19549.7798695008s|d6079760aa0fb023|2331978|rds|local|vector|||0.009||
+inp_week_plot_seas|stem|d71787314a596f96|6b5a2d4aa1a2a38d|54a0fe585ca9f2ec|-1884085488||t19549.779866692s|81e82032d6c3a92b|2051372|rds|local|vector|||0.104||
+inp_week_plot_splot|stem|43480af6628369a5|5451de1ffa1384cc|84d7ee0202b399db|-848641094||t19549.779851477s|e88140106fcbae80|43222630|rds|local|vector|||0.361||
+inp_week_plot_summer|stem|bbd203dc2ce2d37b|cc4d026fe42c0ec4|e28034e2731306e8|-1234962551||t19549.7798619559s|7f0415e73fdd264d|2076886|rds|local|vector|||0.019||
+inp_week_plot_summer_frac|stem|4fe0b94822ddaf1f|8c2467ca11c2bffa|3308002e06cc23ed|448285361||t19549.7798543687s|e8c12c1a16394b0d|2256254|rds|local|vector|||0.009||
+inp_week_plot_ts|stem|b7415341d0bcf037|d329e6d6f2f0640d|a99f73182a06eee5|-706873573||t19549.7798580237s|143bf8e782960199|2048339|rds|local|vector|||0.01||
 irwa|stem|ec27f6dacfa9b3fb|7f3a60c2a1a3c174|44ab65b560582624|1457571422||t19535.0028275823s|3d12b0fc26c71a6b|740135|rds|local|vector|||0.002||
 irwa_howlett|stem|9b07d2a5ff2ffd94|eb76f17c08817d4e|6c1af2b155519bc3|1630939580||t19535.0028249469s|7317ca88546f13b0|340155|rds|local|vector|||0.019||
 irwa_howlett_data|stem|6f7f868da1b34bee|5418c2482e4cc3d3|8ac029c5392b2443|698892392||t19417.6658535904s|f23549b4333bb6f3|370924|rds|local|vector|||0.282||
@@ -215,25 +235,25 @@ lom_coef_box|stem|548642dff9920634|66f4bc502c790cad|ed2c613ab53b8c21|502461420||
 lom_coef_extreme|stem|9060a505cccd913e|73fb49c8f95de203|31f7d6c4c6e605b3|18663244||t19535.1778557726s|3cbddd32d0862776|21479480|rds|local|vector|||0.047||
 lom_coef_lm|stem|36712f4564900c69|ef803a0bc9ecb595|c9c23b098aaa0bd4|-1877076414||t19535.1942825989s|5cb116a8b9a87629|23347075|rds|local|vector|||0.086||
 lom_coef_lm_splot|stem|a2115b90a8994ceb|abfe6624406347d4|5b3177d1f9fce8aa|-236076850||t19535.1943053546s|83247f0bc1657c3a|23777830|rds|local|vector|||0.024||
-lom_coef_map|stem|f6083b070e62c540|d35d3b0cd9d999f7|f32632bef0388cc6|186550031||t19535.9471529357s|894575204c7df5bc|22318681|rds|local|vector|||0.073||
+lom_coef_map|stem|76229727027567c6|d35d3b0cd9d999f7|9906079ec4745091|186550031||t19549.781203111s|06a4d7e9eb98eebd|22479433|rds|local|vector|||0.065||
 lom_coef_map_lom3|stem|9fdec0156f0622df|603dfdfef460ecc5|a8b034e92a6c8d2f|397734082||t19535.1778341978s|33570ec6016607ce|22101055|rds|local|vector|||0.055||
-lom_coef_map_model|stem|b6f3aaba7d34d3ae|b110f90e0af3a9de|7ce747c73503fd60|-246019443||t19535.9482318097s|0af99da93b32143b|22704375|rds|local|vector|||0.051||
-lom_coef_pairs|stem|043a8980144d02b7|c018803ba009b224|093b0a7f6357ea89|2115748811||t19535.9482794923s|0167795d1e4cd154|22812007|rds|local|vector|||0.113|Removed 355 rows containing missing values. Removed 355 rows containing missing values. Removed 355 rows containing missing values|
-lom_coef_splot_area|stem|56a5b19f87e58b42|35559f81f42955b4|1345027291a3a82e|-757505717||t19535.9479811436s|cfc5b4dcc4198317|21256835|rds|local|vector|||0.044||
-lom_coef_splot_model|stem|7add95c3591d0b83|d67cc46d57918da7|863fd11f160347db|-873653697||t19535.9481962473s|434d855eacb1f6a0|21235615|rds|local|vector|||0.017||
-lom_coef_violin|stem|fe87cfdfeac7b7f0|4b2d506968ca21a2|a113664bf8c99bec|1027240562||t19536.8879797295s|abe2ff97b49b3cd6|27661486|rds|local|vector|||0.023||
-lom_curves|stem|d3b3227362b4f288|d6b09ec8b0f3e169|b3e494e1715645ab|-961903036||t19535.9455318842s|479c4d56278bad7a|23083849|rds|local|vector|||0.138||
+lom_coef_map_model|stem|f735ee359a37af38|b110f90e0af3a9de|af93e7bc3e2ef638|-246019443||t19549.7813539604s|49abada8a5fdc4b0|22867145|rds|local|vector|||0.04||
+lom_coef_pairs|stem|69a05c9c9ac52f65|c018803ba009b224|506aeb74a3ee4a99|2115748811||t19549.7812287336s|010c6693b034700e|22973302|rds|local|vector|||0.132|Removed 355 rows containing missing values. Removed 355 rows containing missing values. Removed 355 rows containing missing values|
+lom_coef_splot_area|stem|fc6007d8bdf8c7ec|35559f81f42955b4|aacb6f4f050b9905|-757505717||t19549.781421235s|bfa58715fec070d8|21417301|rds|local|vector|||0.016||
+lom_coef_splot_model|stem|022ddb57f37c2010|d67cc46d57918da7|705981a893ff6720|-873653697||t19549.7814000505s|cd1d79d81f1df52b|21400023|rds|local|vector|||0.017||
+lom_coef_violin|stem|5f7fc860e2afc44a|4b2d506968ca21a2|523dcb37e24c6d46|1027240562||t19549.7812646041s|5bfc937ef57ccbe4|28161855|rds|local|vector|||0.009||
+lom_curves|stem|e28a61dc089ec2cb|d6b09ec8b0f3e169|458d551df884a3c4|-961903036||t19549.7812875461s|6f428e02aa4e9c53|23247606|rds|local|vector|||0.021||
 lom_data|stem|8717cbc76d01121e|a1caed9b73ee7009|feffdfc7c14fdb45|988764092||t19535.0955577351s|05d72acecf9ecb43|995746|rds|local|vector|||0.007||
 lom_exclude_stations|stem|462ab233e44a1e77|6eeee1fde5200022|a3dad144c40657ed|2112831200||t19535.7818274992s|dfd0d40dc0c5171b|95|rds|local|vector|||0.612||
-lom_fit|stem|51c4582b27d9b716|684ea8d77a38693e|bc2b52b568297bd3|-886481164||t19535.9406014513s|cfa038647800b807|21095985|rds|local|vector|||4.463|1m22mThere were 16 warnings in mutate.The first warning was1m22m36mℹ39m In argument gof  listpossiblygof_tibbleaugment.fitted,  augmentmean_temp_c.36mℹ39m In row 1.Caused by warning33m39m rNSE can not be computed some elements in obs are zero 1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 15 remaining warnings.|
+lom_fit|stem|71aceec656113224|edc83f6724966b61|b52c967b6f8a4050|-886481164||t19549.7811306281s|eb2a0752f96089b7|21265354|rds|local|vector|||4.447|1m22mThere were 16 warnings in mutate.The first warning was1m22m36mℹ39m In argument gof  listpossiblygof_tibbleaugment.fitted,  augmentmean_temp_c.36mℹ39m In row 1.Caused by warning33m39m rNSE can not be computed some elements in obs are zero 1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 15 remaining warnings.|
 lom_fit_3|stem|043ea6f8c144a8f4|33b174e1b44750e0|bf5387e340eb78fe|669807509||t19535.1136564752s|ab4e5c832da6b058|995768|rds|local|vector|||0.073||
 lom_fit_4|stem|9a3236860c7ec7dd|3dbd721ad1a3782b|596d1fcd5c4582a1|429315818||t19535.1136693656s|5ef7d560e36d9492|9909716|rds|local|vector|||0.275||
 lom_global_fit|stem|db1c0d322fd72bff|cdbe60f871a4d48d|d508d908b805446e|-541176369||t19535.1213132886s|30ed5b6f0c29cb62|367|rds|local|vector|||0.679|1m22mThere were 4 warnings in mutate.The first warning was1m22m36mℹ39m In argument gof  listpossiblygof_tibbledata.fitted,  datamean_temp_c.36mℹ39m In row 1.Caused by warning33m39m rNSE can not be computed some elements in obs are zero 1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 3 remaining warnings.|
-lom_global_gof|stem|5cc228839ae87a1b|65208a1d1f273402|3be32c9ce13882d2|-494308455||t19535.7950287538s|3d5c497082bdda33|338|rds|local|vector|||0.7|1m22mThere were 4 warnings in mutate.The first warning was1m22m36mℹ39m In argument gof  listpossiblygof_tibbledata.fitted,  datamean_temp_c.36mℹ39m In row 1.Caused by warning33m39m rNSE can not be computed some elements in obs are zero 1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 3 remaining warnings.|
+lom_global_gof|stem|5cc228839ae87a1b|65208a1d1f273402|6bb763d93c8b41fe|-494308455||t19549.7811692237s|3d5c497082bdda33|338|rds|local|vector|||0.293|1m22mThere were 4 warnings in mutate.The first warning was1m22m36mℹ39m In argument gof  listpossiblygof_tibbledata.fitted,  datamean_temp_c.36mℹ39m In row 1.Caused by warning33m39m rNSE can not be computed some elements in obs are zero 1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 3 remaining warnings.|
 lom_global_gof_file|stem|3866f8a4ea3b4b1b|606c26b07eca6e11|7e24aab718181300|-384299518|data/lom/lom-global-gof.csv|t19535.7950291401s|bbe0e43529942e5e|163|file|local|vector|||0.03||
-lom_gof|stem|8b43f169f57c2964|c1f49d7074c7bf3d|efa9a168a4daee85|1980818007||t19535.9481494599s|8d53428729a96bd7|21265286|rds|local|vector|||0.036||
-lom_gof_pairs|stem|225c2ed8f6d36a8a|fd63622dc9fbe0c6|38d5e33b96129716|-772725750||t19535.9481756798s|6e57da4d8de1c190|22375088|rds|local|vector|||0.134||
-lom_inp|stem|4f7f22e0dae35d95|d0c2793277c20f0f|f6133d8278e508c5|1490218691||t19537.1708570425s|d814c2cd11695a4f|1001702|rds|local|vector|||0.128||
+lom_gof|stem|311ad6d4abb9a628|c1f49d7074c7bf3d|bf459753b232944a|1980818007||t19549.7813087284s|b8e9591e9f8e7142|21430326|rds|local|vector|||0.015||
+lom_gof_pairs|stem|b0a44f56bbfa8cc1|fd63622dc9fbe0c6|3c2cc3212b0e8df9|-772725750||t19549.7813788798s|1a3001b0e86b5287|22533956|rds|local|vector|||0.1||
+lom_inp|stem|b07b84e5ded054af|d0c2793277c20f0f|0951e025fa297365|1490218691||t19549.7810587449s|8d5cc41cb1dbd32e|1032303|rds|local|vector|||0.124||
 lom_model_splot|stem|7add95c3591d0b83|d67cc46d57918da7|863fd11f160347db|-1870653024||t19535.9450546253s|434d855eacb1f6a0|21235615|rds|local|vector|||0.031||
 lom_models|stem|b197c2a2361af056|0d2fce53c6176dc1|d97e0c74759c1c88|410589980||t19535.106132819s|b888abb0bd8dd76b|11891522|rds|local|vector|||2.306|1m22mThere were 8 warnings in mutate.The first warning was1m22m36mℹ39m In argument gof  listgof_tibbleaugment.fitted, augmentmean_temp_c.36mℹ39m In row 1.Caused by warning33m39m rNSE can not be computed some elements in obs are zero 1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 7 remaining warnings.|
 lom_models_failed|stem|e47feec8502e05ec|0966a94a1c213449|0833af8d3bb42487|-1228715096||t19535.0946086508s|35ca74335fb6f294|2604|rds|local|vector|||0.003||
@@ -242,7 +262,7 @@ lom_plot_gof|stem|8b43f169f57c2964|c1f49d7074c7bf3d|efa9a168a4daee85|-1266331297
 lom_plot_gof_pairs|stem|225c2ed8f6d36a8a|fd63622dc9fbe0c6|38d5e33b96129716|-2143253495||t19535.9443799754s|6e57da4d8de1c190|22375088|rds|local|vector|||0.161||
 lom_plot_model_fit|stem|8b43f169f57c2964|c1f49d7074c7bf3d|efa9a168a4daee85|-1036792208||t19535.9422816818s|8d53428729a96bd7|21265286|rds|local|vector|||0.037||
 lom_plot_resid|stem|07e0fdc9a3010914|3a734499e7c9a31b|bb59ca3dc4ece6e0|-1664709616||t19535.9438928055s|16da3e274f6de08a|24081458|rds|local|vector|||0.019||
-lom_resid|stem|07e0fdc9a3010914|3a734499e7c9a31b|bb59ca3dc4ece6e0|-1813136524||t19535.9482541794s|16da3e274f6de08a|24081458|rds|local|vector|||0.01||
+lom_resid|stem|80cbd6f158186d2f|3a734499e7c9a31b|162c9eed859d092d|-1813136524||t19549.7813313429s|2b239fcc6a83bd48|24241986|rds|local|vector|||0.015||
 lom3|function|352d5479e56082ff|||||||||||||||
 lom4|function|4ad1d15d4b5c087d|||||||||||||||
 memo_data_fig_cdf_years|stem|605d7e2cfc45a4f3|4009492be0da6d66|826527d081a09832|-725638319||t19530.5388598232s|882c07f38213c377|272827|rds|local|vector|||0.004||
@@ -459,6 +479,9 @@ obs_compare_drainage_area_splot|stem|e14fa0e34e04a0d9|3b94d84827403dab|a865d391c
 obs_day|stem|3e8db37247522af8|1ea85946a04ba7a6|339258d5961617bf|350280650||t19535.0391088256s|629d4f49f88b7f96|7977735|rds|local|vector|||0.521||
 obs_day_daymet|stem|007cadeefb8f134f|71cfe3eda60d41b9|a62013e0f58712aa|2066371718||t19530.129335936s|9280d00409d72e5c|26404925|rds|local|vector|||5.621||
 obs_day_flowline|stem|8f30e2e6894e007f|097875027d93dde0|1aaf919d90b50cba|145025413||t19530.0624280035s|d071ae2c0b8e007b|13409594|rds|local|vector|||0.239||
+obs_day_map_stn|stem|a192f641ad733aad|062c654bafe11b35|94ba04b5c4081a5e|-60541933||t19537.7786972958s|2b9829a0638bb439|20199450|rds|local|vector|||0.083||
+obs_day_tbl_stn|stem|49ae72b174eefd7b|45d12ed0cb0c2d3b|9bea16f2728854df|-1262351011||t19537.5310925345s|6f4c3c775ad9cd4d|528|rds|local|vector|||0.55||
+obs_day_tbl_stn_file|stem|f62391efa8aee645|ba1e7a0b4c576dd2|5dcbe7998969a402|-1100449041|data/obs-stn.csv|t19537.7786980123s|034d99188663e658|707|file|local|vector|||0.054||
 obs_daymet_basin|stem|3bbdb769bcaad434|93e50f84c23c81e7|e649ddd0054d681d|2078815208||t19535.9527664374s|58b76c03ca6351f4|152385780|rds|local|vector|||292.578||
 obs_daymet_stn|stem|65ba242d00f8769d|0e1a2d41fe63d862|6a93b0fcc05209e3|-562091860||t19535.0446493668s|b4e5700475bf0789|102760987|rds|local|vector|||48.131||
 obs_nhdplushr|stem|1ea9cc926d33291d|2fd99bb113dcae02|b8b6432e956e1246|2024573867||t19534.8682753209s||2.2250738585072e-308|rds|local|vector|||0.505||1m22m36mℹ39m In argument geom_flowline   nhdplushr_flowlinegeometrynearest_index.36mℹ39m In row 1.1mCaused by error22m1m22m33m39m geom_flowline must be size 1, not 1170.36mℹ39m Did you mean geom_flowline   listnhdplushr_flowlinegeometrynearest_index
@@ -500,23 +523,33 @@ reg_inp|stem|502b6ad0187f5129|1c0ceb12f078298a|617977d6c525f38b|835751995||t1953
 reg_lom_pred|stem|bcede25ff6656f7d|11418d8b93c7e66a|72ee7d000c3c28bb|996853433||t19536.7436443495s|5f4c8dcf4e208b29|1549652|rds|local|vector|||4.752||
 reg_pred|stem|3d4399384f7c0814|dda0e71bfccd8d46|5d8d713d62a7da74|629332758||t19536.7530657041s|aad5821f86662ee5|1588151|rds|local|vector|||9.841||
 reg_pred_climate|stem|5a5fbbd1d5fe0505|c1a926f0c74047b1|a701fdec80b8ce7e|1120849688||t19536.9072888261s|cc22c4a73db12e99|7137054|rds|local|vector|||103.398||
-reg_pred_climate_basin|stem|5b064a8bdd8bcf83|cd6d6e2105f3d063|2f853d0a64e1d881|-1368803841||t19536.8898582008s|9a3c2bf8d727d4b0|1253966|rds|local|vector|||0.866||
+reg_pred_climate_basin|stem|60e70973622bd5d1|cd6d6e2105f3d063|ddfa6fff3e0e5a3f|-1368803841||t19537.8831859425s|5eb1f87a30f2ff53|1253947|rds|local|vector|||0.861||
 reg_pred_climate_basin_plot_stack|stem|b5aa34820da80a0d|30f87f537b4f7153|56301be6ec81744f|277804440||t19536.8899696463s|9d035e7642a26a52|1355280|rds|local|vector|||0.023||
-reg_pred_climate_basin_plot_stack_state|stem|f2ad907544ba1b1e|4be621322d5a08fc|a6a1356d29e67d24|-1391154057||t19536.8899676458s|cb357168a3c274fb|1402587|rds|local|vector|||0.058||
+reg_pred_climate_basin_plot_stack_state|stem|82d10620a10d2f44|4be621322d5a08fc|fb3e3d869a0bf69f|-1391154057||t19537.5601345121s|5f92115ed48d0d3a|1402570|rds|local|vector|||0.057||
 reg_pred_climate_map_data|stem|5178170512b0a01a|a46991c63e8ecb14|5bd26cc90dcafd46|-669543489||t19536.9914825961s|ff91ae8987b32459|3633878|rds|local|vector|||1.101||
-reg_pred_climate_map_temp|stem|7b6b5a4259147ee8|4d4c97115e27aa64|6900aea111866f4a|-2118016807||t19536.8421706324s|ba0d555144f6e7ff|7632118|rds|local|vector|||0.023||
+reg_pred_climate_map_delta_2050|stem|831383d18e20f8cb|ccdd868da6cb0aef|405ab4390a263cdf|-1030676019||t19537.7789591095s|d8fcb9d6861cd8e3|29040580|rds|local|vector|||0.481||
+reg_pred_climate_map_temp|stem|0f40fae39913a342|261241c8fcad63f3|2d106136140d22b5|-2118016807||t19537.7789978446s|7b049e5e446e5b21|19364884|rds|local|vector|||0.005||
 reg_pred_climate_map_temp_q50|stem|818b5d1d28d07364|5d3c50271efbc8ff|a8f2546d5a0f30e6|-1519755446||t19536.9940750982s|d2bc9fa33e4dbe8a|18627595|rds|local|vector|||0.058||
-reg_pred_climate_map_thermal|stem|0cde90491d8d77b6|b4b587813e7b3aa1|2f782d6a2ed11f79|1011976172||t19536.8899969088s|b4a4ffbb92ea5315|7631543|rds|local|vector|||0.013||
+reg_pred_climate_map_thermal|stem|7aee88a12053878d|665c34d09efad167|7f62e0a5d25155c5|1011976172||t19537.7790300053s|cacfee996402e2c3|19364435|rds|local|vector|||0.004||
 reg_pred_climate_map_thermal_q50|stem|92f57f4a580a02e3|6d2e0c4ec7fb045f|13b394601a190243|-1566235649||t19536.9944810983s|78ab11d9d793c1f5|18627178|rds|local|vector|||0.059||
+reg_pred_climate_plot_basin|stem|4d20b23f12d7a9f1|119cfc67bed21fb7|fb3e3d869a0bf69f|-1599850601||t19537.7789621108s|47077c8033551533|1402534|rds|local|vector|||0.034||
+reg_pred_climate_plot_q50|stem|7d05293456a562e4|ac146455e3b8db85|167b0bf94ea519fe|1792074268||t19537.5615889887s|a3bf9c81d20f46fd|1406205|rds|local|vector|||0.041||
+reg_pred_climate_plot_stack_basin|stem|82d10620a10d2f44|4be621322d5a08fc|fb3e3d869a0bf69f|868809907||t19537.5605646567s|5f92115ed48d0d3a|1402570|rds|local|vector|||0.056||
 reg_pred_climate_plot_stack_state|stem|90c39cffd2db5b73|b17e023656434ed4|ca1b403ffff5b14a|1955418217||t19536.8899761109s|8c6effb6e143d893|1374843|rds|local|vector|||0.016||
-reg_pred_climate_plot_stack_streamorder|stem|50cf5d4466af74c8|73e997688237ab52|b2d272d0f2cce84f|-137429284||t19536.8899740441s|256f7d88fccfa82b|2073036|rds|local|vector|||0.044||
+reg_pred_climate_plot_stack_streamorder|stem|61433d8a5b5a44b0|b1875f2e1fada984|624006e634314530|-137429284||t19537.5598800108s|e40618072d0a00fd|2076388|rds|local|vector|||0.245||
+reg_pred_climate_plot_state|stem|ebc57960257659ca|e81e590f46cdf16b|c80bb7fdf05ab565|-775178162||t19537.5615827492s|392bb49e4341a1c8|1401448|rds|local|vector|||0.048||
+reg_pred_climate_plot_streamorder|stem|ba0727c3ed61ed8e|6c91d78e3bfe2e88|e638c9567fe9a110|156141734||t19537.5741595721s|fe0f174819ad4ce9|2076351|rds|local|vector|||0.076||
+reg_pred_climate_plot_streamorder_baseline|stem|61433d8a5b5a44b0|b1875f2e1fada984|624006e634314530|-993640866||t19537.5614080525s|e40618072d0a00fd|2076388|rds|local|vector|||0.044||
 reg_pred_map|stem|22662abe676b41ec|9452b65084dc8afc|e844922597200e57|-63658089||t19536.7583467432s|7ce7526dbe905680|11677532|rds|local|vector|||0.237||
 reg_pred_map_jul|stem|2f4aad5494c79179|f27e6dcf7f4cb2d0|9e1b6b28a129b965|-859275203||t19536.9106085646s|486dd36147822b6b|43019258|rds|local|vector|||0.344||
-reg_pred_map_jul_30yr|stem||9ed9766bc93a3344|feb1139aa0b2878b|1797899259||t19536.9072931125s||0|rds|local|vector|||0.169||modepreserveTopology  logical is not TRUE
+reg_pred_map_jul_30yr|stem|098370f0371f16ec|f2121c033395a468|1f8f44cc548fd53d|1797899259||t19537.7788882219s|dfd0fa7dc8051cf9|41344777|rds|local|vector|||0.127||
+reg_pred_map_param|stem|6c5b5366b9db3725|869b60e47ebc7d21|2ce9697449ef0a8f|1125833524||t19537.7788347929s|fa1b0c1f2c476cf0|83107916|rds|local|vector|||0.298||
 reg_pred_map_temp_mon|stem|8f7a0f3d0c208347|44348451918a8909|e844922597200e57|832097816||t19536.7591704451s|ecf914528e9037b3|11677571|rds|local|vector|||0.23||
 reg_pred_map_thermal_jul|stem|5221afb1f6390e34|6d585a07f354f5be|fe146de7d1e21a22|-1297270750||t19536.7691137828s|cacfe5791d5997e1|25212465|rds|local|vector|||0.206||
+reg_pred_plot_basin|stem|997f9511b54ebe43|8657eb58e330da82|688b507998eae872|494858306||t19537.562704917s|077dcdb9f53c685f|4708173|rds|local|vector|||0.347||
 reg_pred_plot_basin_stack|stem|997f9511b54ebe43|8657eb58e330da82|688b507998eae872|-176584013||t19536.9294544075s|077dcdb9f53c685f|4708173|rds|local|vector|||0.361||
 reg_pred_plot_hist|stem|4c47c6453a917cbe|fb1bd56507fe9e47|eb773e589ec88621|864877115||t19536.8879980259s|cc01f32dbe7e272f|2079762|rds|local|vector|||0.138||
+reg_pred_plot_streamorder|stem|e51096819114ca01|0f7f95bee2461bd7|231ff4054e90e099|-1326589773||t19537.5736166294s|98beeab31ff12136|2086431|rds|local|vector|||0.078||
 reg_pred_xgb|stem|985f16bc4bc56d56|87d607e9668c30bc|896742ff6a93ed38|-1349325302||t19536.6288099313s|0789dda02a648126|4737188|rds|local|vector|||0.324||
 reg_pred_xgb_plot_hist|stem|0cd94fda285dffef|5dce95d32f971f5f|b3f8c1a1337375e9|-1965276494||t19536.6288308259s|d07d9684e75d6a6e|5121959|rds|local|vector|||0.008||
 reg_pred_xgb_plot_violin|stem|a432c720889cacc3|17dd974c183a52c2|633cee3397b51cde|690913728||t19537.0313593726s|49e2f92b9e272901|5477542|rds|local|vector|||0.037||
@@ -545,15 +578,17 @@ streamstats_params|stem|8ea8ea52a8bf6a14|3b950f25e8f3a01b|e646e1cebe065aec|88181
 streamstats_stn|stem|45e61dbaa413814a|297e1ae69bf63dca|1c876bc1aa24c3ca|-1248265806||t19534.7786462113s|0057cf33ffc902d5|28738|rds|local|vector|||0.06||
 streamstats_stn_failed|stem|472732f8aefb014d|e29d1872a45b627a|bc35299f7beae768|-1009964346||t19534.7792252244s|55909a9b536e1416|968|rds|local|vector|||0.012||
 streamstats_stn_file|stem|7d842aa25afb1ca3|339ae753eb239976|ef46db3751d8e999|-1738696460|data/streamstats/stations.csv|t19531.0876610955s|dfcabc3640c5b882|70662|file|local|vector|||1.775||
+targets_app|object|eb114b6e0b426d6f|||||||||||||||
 targets_climate|object|df917ed7f6883157|||||||||||||||
 targets_crwa|object|26f251a97240b08d|||||||||||||||
 targets_daymet|object|0ed9bcc6f5d64658|||||||||||||||
 targets_ecosheds|object|10c4a9fede18ae6f|||||||||||||||
+targets_export|object|6221e4d9068614a1|||||||||||||||
 targets_flow|object|ef7411a000488d6e|||||||||||||||
 targets_gis|object|81433451dfb084b7|||||||||||||||
 targets_hoorwa|object|7fbd2aedb6f7a20c|||||||||||||||
 targets_hrf|object|119fcf3fd92292fe|||||||||||||||
-targets_inp|object|675f7bd16870b39b|||||||||||||||
+targets_inp|object|d75fb3ccd8fe8205|||||||||||||||
 targets_irwa|object|2d83dbf10351661c|||||||||||||||
 targets_lom|object|f560410140af408e|||||||||||||||
 targets_memo_data|object|bdd2174af2670ac2|||||||||||||||
@@ -567,9 +602,9 @@ targets_nhdplusv2_prism|object|7745c6ab887c268e|||||||||||||||
 targets_nwis|object|8170f638323cf882|||||||||||||||
 targets_nwis_flow|object|ee56c262805f0d95|||||||||||||||
 targets_nwis_temp|object|09aed7bd189790a8|||||||||||||||
-targets_obs|object|adcc1a01a6728463|||||||||||||||
+targets_obs|object|9187f6190941aa4d|||||||||||||||
 targets_pie_lter|object|38d546b99d1fd5bf|||||||||||||||
-targets_reg|object|565ef80280e21dc4|||||||||||||||
+targets_reg|object|7768448fd155767c|||||||||||||||
 targets_streamstats|object|fb747ebf65bcc1b7|||||||||||||||
 targets_temp|object|a194de1d59bd69cd|||||||||||||||
 targets_wqx|object|bacf1ed962d104cd|||||||||||||||
@@ -677,12 +712,12 @@ xgb_final_gof|stem|f140bfcdff955067|21b5343cecee3bf5|b7845cffc3dc269e|1390507143
 xgb_final_gof_file|stem|c449e76f8bb62ed4|17a64be1b08522b1|80289be19e327fc0|163141682|data/reg/final-gof.csv|t19536.2464516513s|e6a361c1358ac0bd|281|file|local|vector|||0.001||
 xgb_final_pred|stem|ce5acec63e9817c5|e031193b44f4b186|039c32505523a2d8|-550838068||t19536.2463601542s|4eeac9b2ab1e3903|4223051|rds|local|vector|||0.024||
 xgb_fit|stem|213d22b83e5fbdcf|24d500c2531b80ed|f7ed53f80a634c00|-205694030||t19536.2463253885s|ce0650eaae8afb6a|4214093|rds|local|vector|||126.572||
-xgb_inp|stem|af331246025b44b7|cafde25364bb735d|7597dedff462bc2c|726127394||t19536.2448536491s|317d2f4d94ae34d2|52773|rds|local|vector|||0.019||
-xgb_lom|stem|f910f3da27e237fe|2e94a32a195d801d|99ad8d0e5803ece8|2107668239||t19536.2463530865s|bb869b89dff699b4|1559327|rds|local|vector|||2.268|1m22mThere were 8 warnings in mutate.The first warning was1m22m36mℹ39m In argument gof  listgof_tibbledata_week.pred,  data_weekmean_temp_c.36mℹ39m In row 1.Caused by warning33m39m rNSE can not be computed some elements in obs are zero 1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 7 remaining warnings.|
-xgb_lom_global_gof|stem|b6e7a545c4f5de22|b952450bb361d03f|fcedf8c740ed6bf6|-779456985||t19536.2464274279s|09ba59ab403de298|314|rds|local|vector|||0.352|1m22mThere were 4 warnings in mutate.The first warning was1m22m36mℹ39m In argument gof  listgof_tibbledata.pred, datavalue.36mℹ39m In row 1.Caused by warning33m39m rNSE can not be computed some elements in obs are zero 1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 3 remaining warnings.|
+xgb_inp|stem|af331246025b44b7|cafde25364bb735d|fd18391bcc94e348|726127394||t19549.7811802066s|317d2f4d94ae34d2|52773|rds|local|vector|||0.899||
+xgb_lom|stem|407851702679bea9|2e94a32a195d801d|5f78d0f4f8b74761|2107668239||t19549.7814467927s|53c3ef9a055457cb|1584111|rds|local|vector|||1.965|1m22mThere were 8 warnings in mutate.The first warning was1m22m36mℹ39m In argument gof  listgof_tibbledata_week.pred,  data_weekmean_temp_c.36mℹ39m In row 1.Caused by warning33m39m rNSE can not be computed some elements in obs are zero 1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 7 remaining warnings.|
+xgb_lom_global_gof|stem|b6e7a545c4f5de22|b952450bb361d03f|05b28a5c73885330|-779456985||t19549.7814645667s|09ba59ab403de298|314|rds|local|vector|||0.139|1m22mThere were 4 warnings in mutate.The first warning was1m22m36mℹ39m In argument gof  listgof_tibbledata.pred, datavalue.36mℹ39m In row 1.Caused by warning33m39m rNSE can not be computed some elements in obs are zero 1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 3 remaining warnings.|
 xgb_lom_global_gof_file|stem|65718fbb620dc1dd|e39939245686f46a|762898c71b2c2ed2|1499176189|data/reg/global-gof.csv|t19536.2464516203s|23cbc8442f78eae6|173|file|local|vector|||0.039||
-xgb_lom_plot_gof|stem|dff7aaadd280ba39|4e5ebe76979fcada|cb5f906522cf5f2c|1431702541||t19536.2464294498s|84c46f0879672deb|1721975|rds|local|vector|||0.017||
-xgb_lom_plot_splot|stem|b10488639050b246|e66d93dccf13cc23|638d3d943e4e4ed0|1389795822||t19536.2464232878s|a2f008cdac388a9c|3366513|rds|local|vector|||0.021||
+xgb_lom_plot_gof|stem|f001d96a84dfe225|4e5ebe76979fcada|3e1a99ca233366ef|1431702541||t19549.7814629161s|2ca57b34e64688e7|1747126|rds|local|vector|||0.012||
+xgb_lom_plot_splot|stem|e5446041bbec1596|e66d93dccf13cc23|d1357926dab34712|1389795822||t19549.7814609309s|d1c15cee14d954d1|3395661|rds|local|vector|||0.014||
 xgb_plot_final_splot|stem|c5848c3e2eab4f1c|2276d94c37381025|22c3aacb91e0b284|-848916204||t19536.2464505591s|e7bf3a6e9d3b13c1|12860208|rds|local|vector|||0.017||
 xgb_plot_metrics|stem|f9b42982faed4b3c|6b33af43f99f48af|61185c4437bd1af6|759238093||t19536.2463839646s|1adcba9df4e08fe9|14057979|rds|local|vector|||0.057||
 xgb_plot_vip|stem|0de97db553e420e6|fd3fa7bfb35f227e|d614bc9914054164|-2125443439||t19536.2464089249s|73ef0cb5541fea0a|16246539|rds|local|vector|||0.035||

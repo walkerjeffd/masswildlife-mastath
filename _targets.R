@@ -44,7 +44,10 @@ list(
 
   targets_lom,
   targets_xgb,
-  targets_reg
+  targets_reg,
+
+  targets_app,
+  targets_export
 
   # targets_memo_data
 )

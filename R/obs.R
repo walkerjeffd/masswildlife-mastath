@@ -14,6 +14,63 @@ targets_obs <- list(
       select(-type) |>
       ungroup()
   }),
+  tar_target(obs_day_tbl_stn, {
+    obs_day |>
+      unnest(data) |>
+      mutate(
+        provider = case_when(
+          provider == "HAYDEN" ~ "USGS_Conte",
+          provider == "MAFW_RQ" ~ "MAFW",
+          TRUE ~ provider
+        )
+      ) |>
+      group_by(source, provider) |>
+      summarise(
+        n_stations = length(unique(station_id)),
+        n_days = n(),
+        start_year = min(year(date)),
+        end_year = max(year(date)),
+        .groups = "drop"
+      ) |>
+      relocate(source, .after = everything())
+  }),
+  tar_target(obs_day_map_stn, {
+    x <- obs_day |>
+      rowwise() |>
+      mutate(n_day = nrow(data), n_year = length(unique(year(data$date)))) |>
+      select(station_id, source, n_day, n_year)
+    obs_stn |>
+      left_join(
+        x,
+        by = "station_id"
+      ) |>
+      ggplot() +
+      geom_sf(data = climate_huc8_simp, fill = NA) +
+      geom_sf(
+        data = ~ filter(., source == "EcoSHEDS"),
+        aes(size = n_year, fill = source), shape = 21, alpha = 0.35
+      ) +
+      geom_sf(
+        data = ~ filter(., source == "USGS-NWIS"),
+        aes(size = n_year, fill = source), shape = 21, alpha = 0.35
+      ) +
+      geom_sf(
+        data = ~ filter(., !source %in% c("EcoSHEDS", "USGS-NWIS")),
+        aes(size = n_year, fill = source), shape = 21, alpha = 0.75
+      ) +
+      scale_size_area("# Years", limits = c(1, NA), breaks = c(1, 5, 10, 15, 20)) +
+      labs(fill = "Data Source") +
+      guides(
+        fill = guide_legend(override.aes = list(size = 3))
+      ) +
+      # geom_sf(aes(color = source, size = n_day)) +
+      theme_void()
+  }),
+  tar_target(obs_day_tbl_stn_file, {
+    fname <- "data/obs-stn.csv"
+    write_csv(obs_day_tbl_stn, fname)
+    fname
+  }, format = "file"),
   tar_target(obs_stn, {
     obs_day |>
       select(station_id, latitude, longitude) |>

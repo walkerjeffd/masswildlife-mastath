@@ -195,7 +195,7 @@ targets_reg <- list(
       theme_void()
     wrap_plots(list(p1, p2), nrow = 1)
   }),
-  tar_target(reg_pred_plot_basin_stack, {
+  tar_target(reg_pred_plot_basin, {
     reg_pred |>
       select(COMID, pred) |>
       unnest(pred) |>
@@ -237,6 +237,61 @@ targets_reg <- list(
       scale_x_continuous(breaks = scales::pretty_breaks(), expand = expansion(), label = scales::percent) +
       labs(x = "% River Miles", y = NULL) +
       theme_bw()
+  }),
+  tar_target(reg_pred_plot_streamorder, {
+    x <- reg_pred_climate_basin |>
+      left_join(
+        select(nhdplusv2_enhd_nhdplusatts, comid, streamorder = streamorde),
+        by = c("COMID" = "comid")
+      ) |>
+      group_by(streamorder, year, prob, thermal_jul) |>
+      summarise(
+        n = n(),
+        length_m = sum(length_m), .groups = "drop_last"
+      ) |>
+      mutate(
+        frac_length_m = length_m / sum(length_m)
+      ) |>
+      ungroup() |>
+      complete(
+        year, prob, thermal_jul,
+        fill = list(n = 0, length_m = 0, frac_length_m = 0)
+      ) |>
+      arrange(year, prob) |>
+      mutate(thermal_jul = fct_rev(thermal_jul)) |>
+      filter(prob == "Q50", year == "Baseline", streamorder < 6)
+    p1 <- x |>
+      ggplot(aes(factor(streamorder), length_m / 1e3)) +
+      geom_col(aes(fill = thermal_jul), position = position_stack()) +
+      geom_hline(yintercept = seq(0, 1, by = 0.1), color = "gray50", alpha = 0.2, linewidth = 0.5) +
+      scale_fill_manual("Thermal Class", values = thermal_class_colors) +
+      scale_y_continuous(breaks = scales::pretty_breaks(n = 10), expand = expansion(c(0, 0.05)), labels = scales::comma) +
+      labs(
+        x = "Stream Order", y = "River Miles (km)",
+        title = "a) River Miles (km)"
+      ) +
+      theme_bw() +
+      theme(
+        strip.background = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
+      )
+    p2 <- x |>
+      ggplot(aes(factor(streamorder), length_m)) +
+      geom_col(aes(fill = thermal_jul), position = position_fill()) +
+      geom_hline(yintercept = seq(0, 1, by = 0.1), color = "gray50", alpha = 0.2, linewidth = 0.5) +
+      scale_fill_manual("Thermal Class", values = thermal_class_colors) +
+      scale_y_continuous(breaks = scales::pretty_breaks(n = 10), labels = scales::percent, expand = expansion()) +
+      labs(
+        x = "Stream Order", y = "% Total River Miles",
+        title = "b) % Total River Miles"
+      ) +
+      theme_bw() +
+      theme(
+        strip.background = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
+      )
+    wrap_plots(list(p1, p2)) +
+      plot_layout(guides = "collect")
   }),
   tar_target(reg_pred_climate, {
     x_climate_proj <- climate_proj |>
@@ -373,28 +428,7 @@ targets_reg <- list(
         year = factor(year, levels = c("Baseline", sort(unique(x_proj$year))))
       )
   }),
-  tar_target(reg_pred_climate_basin_plot_stack, {
-    reg_pred_climate_basin |>
-      group_by(basin_id, year, prob, thermal_jul) |>
-      summarise(
-        n = n(),
-        length_m = sum(length_m), .groups = "drop_last"
-      ) |>
-      mutate(
-        frac_length_m = length_m / sum(length_m)
-      ) |>
-      ungroup() |>
-      complete(
-        basin_id, year, prob, thermal_jul,
-        fill = list(n = 0, length_m = 0, frac_length_m = 0)
-      ) |>
-      arrange(basin_id, year, prob) |>
-      ggplot(aes(year, frac_length_m)) +
-      geom_col(aes(fill = thermal_jul), position = position_stack()) +
-      scale_fill_manual("Thermal Class", values = thermal_class_colors) +
-      facet_grid(vars(prob), vars(basin_id))
-  }),
-  tar_target(reg_pred_climate_basin_plot_stack_q50, {
+  tar_target(reg_pred_climate_plot_q50, {
     reg_pred_climate_basin |>
       filter(prob == "Q50") |>
       group_by(basin_id, year, prob, thermal_jul) |>
@@ -429,7 +463,7 @@ targets_reg <- list(
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
       )
   }),
-  tar_target(reg_pred_climate_plot_stack_state, {
+  tar_target(reg_pred_climate_plot_state, {
     reg_pred_climate_basin |>
       group_by(year, prob, thermal_jul) |>
       summarise(
@@ -445,8 +479,7 @@ targets_reg <- list(
         fill = list(n = 0, length_m = 0, frac_length_m = 0)
       ) |>
       arrange(year, prob) |>
-      mutate(thermal_jul = fct_rev(thermal_jul)) |> view()
-      # filter(prob == "Q50") |>
+      mutate(thermal_jul = fct_rev(thermal_jul)) |>
       ggplot(aes(year, length_m)) +
       geom_col(aes(fill = thermal_jul), position = position_fill()) +
       geom_hline(yintercept = seq(0, 1, by = 0.1), color = "gray50", alpha = 0.2, linewidth = 0.5) +
@@ -466,7 +499,7 @@ targets_reg <- list(
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
       )
   }),
-  tar_target(reg_pred_climate_plot_stack_streamorder, {
+  tar_target(reg_pred_climate_plot_streamorder, {
     reg_pred_climate_basin |>
       left_join(
         select(nhdplusv2_enhd_nhdplusatts, comid, streamorder = streamorde),
@@ -486,14 +519,15 @@ targets_reg <- list(
         fill = list(n = 0, length_m = 0, frac_length_m = 0)
       ) |>
       arrange(year, prob) |>
-      filter(prob == "Q50") |>
+      mutate(thermal_jul = fct_rev(thermal_jul)) |>
+      filter(prob == "Q50", streamorder < 6) |>
       ggplot(aes(year, length_m)) +
-      geom_col(aes(fill = thermal_jul), position = position_fill(), alpha = 0.9, width = 0.8) +
+      geom_col(aes(fill = thermal_jul), position = position_fill()) +
+      geom_hline(yintercept = seq(0, 1, by = 0.1), color = "gray50", alpha = 0.2, linewidth = 0.5) +
       scale_fill_manual("Thermal Class", values = thermal_class_colors) +
-      scale_y_continuous(labels = scales::percent) +
+      scale_y_continuous(breaks = scales::pretty_breaks(n = 10), labels = scales::percent, expand = expansion()) +
       labs(
-        x = "Prediction Period", y = "% Total River Miles",
-        subtitle = "Scenario: RCP8.5 (Q50)"
+        x = "Prediction Period", y = "% Total River Miles"
       ) +
       facet_wrap(vars(streamorder), labeller = label_both) +
       theme_bw() +
@@ -502,7 +536,7 @@ targets_reg <- list(
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
       )
   }),
-  tar_target(reg_pred_climate_basin_plot_stack_state, {
+  tar_target(reg_pred_climate_plot_basin, {
     reg_pred_climate_basin |>
       group_by(basin_id, year, prob, thermal_jul) |>
       summarise(
@@ -525,8 +559,7 @@ targets_reg <- list(
       scale_fill_manual("Thermal Class", values = thermal_class_colors) +
       scale_y_continuous(labels = scales::percent) +
       labs(
-        x = "Prediction Period", y = "% Total River Miles",
-        subtitle = "Scenario: RCP8.5 (Q50)"
+        x = "Prediction Period", y = "% Total River Miles"
       ) +
       facet_wrap(vars(basin)) +
       theme_bw() +
