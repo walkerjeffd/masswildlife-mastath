@@ -33,7 +33,7 @@ targets_export <- list(
       left_join(x_tair, by = "basin_id") |>
       relocate(starts_with("TEMP_"), geometry, .after = everything()) |>
       relocate(basin_id, basin, huc8, .after = "COMID") |>
-      rename(GEOMETRY = geometry, TOT_NLCD11_BARREN = TOT_NLCD11_BARRON) |>
+      rename(GEOMETRY = geometry) |>
       rename_with(toupper) |>
       rename(geometry = GEOMETRY) |>
       st_transform(4326)
@@ -49,7 +49,7 @@ targets_export <- list(
   #   fname
   # }, format = "file"),
   tar_target(export_flowlines_csv_file, {
-    fname <- "data/export/mastath-output.csv"
+    fname <- "data/export/mastath-flowlines.csv"
     export_flowlines |>
       st_drop_geometry() |>
       as_tibble() |>

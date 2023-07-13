@@ -6,7 +6,7 @@ targets_reg <- list(
   tar_target(reg_inp, {
     # all flowlines (area km2 < 1e4)
     # with attributes
-    nhdplusv2_flowline |>
+    gis_flowline |>
       st_drop_geometry() |>
       select(COMID, any_of(names(xgb_inp))) |>
       filter(TOT_BASIN_AREA < 1e4) |>
@@ -123,7 +123,7 @@ targets_reg <- list(
       select(COMID, pred) |>
       unnest(pred) |>
       filter(name == "TOT_TAV7100")
-    nhdplusv2_flowline |>
+    gis_flowline |>
       select(COMID) |>
       crossing(month = 6:8) |>
       st_as_sf() |>
