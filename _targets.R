@@ -2,9 +2,7 @@ library(targets)
 
 # load all targets
 invisible(sapply(list.files("R", pattern = ".R$", full.names = TRUE), source))
-invisible(sapply(list.files("R/data", pattern = ".R$", full.names = TRUE), source))
-invisible(sapply(list.files("R/memo", pattern = ".R$", full.names = TRUE), source))
-invisible(sapply(list.files("R/nhd", pattern = ".R$", full.names = TRUE), source))
+invisible(sapply(list.files("R/obs", pattern = ".R$", full.names = TRUE), source))
 
 options(tidyverse.quiet = TRUE)
 tar_option_set(packages = c("tidyverse", "janitor", "sf", "units", "glue", "patchwork", "arrow", "tidymodels"))
@@ -15,7 +13,7 @@ if (interactive()) {
 }
 
 list(
-  tar_target(data_dir, "/Users/jeff/Dropbox/Work/masswildlife/data/"),
+  tar_target(data_dir, "data"),
   targets_crwa,
   targets_hoorwa,
   targets_irwa,
@@ -47,7 +45,6 @@ list(
   targets_reg,
 
   targets_app,
-  targets_export
-
-  # targets_memo_data
+  targets_output,
+  targets_memo
 )

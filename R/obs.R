@@ -67,7 +67,7 @@ targets_obs <- list(
       theme_void()
   }),
   tar_target(obs_day_tbl_stn_file, {
-    fname <- "data/obs-stn.csv"
+    fname <- "data/output/report/obs-stn-tally-provider.csv"
     write_csv(obs_day_tbl_stn, fname)
     fname
   }, format = "file"),

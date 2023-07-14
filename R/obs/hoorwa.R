@@ -1,7 +1,7 @@
 tar_option_set(packages = c("tidyverse", "janitor", "sf", "units"))
 
 targets_hoorwa <- list(
-  tar_target(hoorwa_data_files, list.files(file.path(data_dir, "hoorwa", "data"), full.names = TRUE), format = "file"),
+  tar_target(hoorwa_data_files, list.files(file.path(data_dir, "obs", "hoorwa", "data"), full.names = TRUE), format = "file"),
   tar_target(hoorwa_data, {
     x <- tibble(
       file = hoorwa_data_files,
@@ -38,7 +38,7 @@ targets_hoorwa <- list(
       geom_line() +
       facet_wrap(vars(station_id))
   }),
-  tar_target(hoorwa_stn_shp, file.path(data_dir, "hoorwa", "stations", "stations.shp"), format = "file"),
+  tar_target(hoorwa_stn_shp, file.path(data_dir, "obs", "hoorwa", "stations", "stations.shp"), format = "file"),
   tar_target(hoorwa_stn, {
     st_read(hoorwa_stn_shp) |>
       transmute(station_id = Station_ID, name = Waterbody, type = "stream") |>

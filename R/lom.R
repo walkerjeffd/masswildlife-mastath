@@ -99,7 +99,7 @@ targets_lom <- list(
       arrange(name)
   }),
   tar_target(lom_global_gof_file, {
-    fname <- "data/lom/lom-global-gof.csv"
+    fname <- "data/output/report/lom-global-gof.csv"
     lom_global_gof |>
       write_csv(fname)
     fname

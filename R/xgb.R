@@ -167,7 +167,7 @@ targets_xgb <- list(
       pivot_wider()
   }),
   tar_target(xgb_final_gof_file, {
-    fname <- "data/reg/final-gof.csv"
+    fname <- "data/output/report/xgb-final-gof.csv"
     xgb_final_gof |>
       write_csv(fname)
     fname
@@ -266,7 +266,7 @@ targets_xgb <- list(
       select(name, train, test)
   }),
   tar_target(xgb_lom_global_gof_file, {
-    fname <- "data/reg/global-gof.csv"
+    fname <- "data/output/report/xgb-global-gof.csv"
     xgb_lom_global_gof |>
       write_csv(fname)
     fname

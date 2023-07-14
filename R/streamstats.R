@@ -6,12 +6,12 @@ targets_streamstats <- list(
     bind_rows(body$parameters) |>
       select(-ID)
   }),
-  tar_target(streamstats_stn_file, "data/streamstats/stations.csv", format = "file"),
+  tar_target(streamstats_stn_file, "data/gis/streamstats/stations.csv", format = "file"),
   tar_target(streamstats_stn, {
     read_csv(streamstats_stn_file, show_col_types = FALSE) |>
       st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
   }),
-  tar_target(streamstats_data_file, "data/streamstats/streamstats.rds", format = "file"),
+  tar_target(streamstats_data_file, "data/gis/streamstats/streamstats.rds", format = "file"),
   tar_target(streamstats_data, {
     read_rds(streamstats_data_file) |>
       unnest_wider(streamstats) |>

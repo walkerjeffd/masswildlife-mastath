@@ -1,7 +1,7 @@
 source("_targets.R")
 
 tar_load(gis_state)
-gis_dir <- "data/nhdplushr/"
+gis_dir <- "data/gis/nhdplushr/"
 
 download_dir <- nhdplusTools::download_nhdplushr(gis_dir, c("0106", "0107", "0108", "0109", "0110", "0202"))
 

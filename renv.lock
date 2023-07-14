@@ -197,6 +197,25 @@
       ],
       "Hash": "45f0398006e83a5b10b72a90663d8d8c"
     },
+    "RPostgres": {
+      "Package": "RPostgres",
+      "Version": "1.4.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "DBI",
+        "R",
+        "Rcpp",
+        "bit64",
+        "blob",
+        "hms",
+        "lubridate",
+        "methods",
+        "plogr",
+        "withr"
+      ],
+      "Hash": "310ecf7e20c4a927bcfd5e625f70eb4c"
+    },
     "Rcpp": {
       "Package": "Rcpp",
       "Version": "1.0.10",
@@ -782,6 +801,13 @@
         "utils"
       ],
       "Hash": "451e5edf411987991ab6a5410c45011f"
+    },
+    "dotenv": {
+      "Package": "dotenv",
+      "Version": "1.0.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "7e1213a65b6190437c644a14ec814ef3"
     },
     "dplyr": {
       "Package": "dplyr",
@@ -2153,6 +2179,13 @@
         "utils"
       ],
       "Hash": "01f28d4278f15c76cddbea05899c5d6f"
+    },
+    "plogr": {
+      "Package": "plogr",
+      "Version": "0.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "09eb987710984fc2905c7129c7d85e65"
     },
     "plyr": {
       "Package": "plyr",

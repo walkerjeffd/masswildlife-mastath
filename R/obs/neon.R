@@ -5,7 +5,7 @@ targets_neon <- list(
   #     "HOPB",      "Hop Brook", "stream", 42.471941, -72.329526
   #   )
   # }),
-  tar_target(neon_temp_stn_file, file.path(data_dir, "neon", "NEON_temp-surfacewater", "NEON.D01.HOPB.DP1.20053.001.2017-07.basic.20230127T120753Z.RELEASE-2023", "NEON.D01.HOPB.DP1.20053.001.sensor_positions.20221205T011106Z.csv"), format = "file"),
+  tar_target(neon_temp_stn_file, file.path(data_dir, "obs", "neon", "NEON_temp-surfacewater", "NEON.D01.HOPB.DP1.20053.001.2017-07.basic.20230127T120753Z.RELEASE-2023", "NEON.D01.HOPB.DP1.20053.001.sensor_positions.20221205T011106Z.csv"), format = "file"),
   tar_target(neon_temp_stn_raw, read_csv(neon_temp_stn_file, col_types = cols(.default = col_character()))),
   tar_target(neon_temp_stn, {
     neon_temp_stn_raw |>
@@ -17,7 +17,7 @@ targets_neon <- list(
       ) |>
       distinct()
   }),
-  tar_target(neon_temp_files, list.files(file.path(data_dir, "neon", "NEON_temp-surfacewater"), recursive = TRUE, full.names = TRUE, pattern = "NEON.D01.HOPB.DP1.20053.001.*TSW_30min"), format = "file"),
+  tar_target(neon_temp_files, list.files(file.path(data_dir, "obs", "neon", "NEON_temp-surfacewater"), recursive = TRUE, full.names = TRUE, pattern = "NEON.D01.HOPB.DP1.20053.001.*TSW_30min"), format = "file"),
   tar_target(neon_temp_raw, {
     tibble(
       filepath = neon_temp_files,
@@ -87,7 +87,7 @@ targets_neon <- list(
       ) |>
       relocate(station_id, .after = "provider")
   }),
-  tar_target(neon_flow_stn_file, file.path(data_dir, "neon", "NEON_discharge-continuous", "NEON.D01.HOPB.DP4.00130.001.2017-07.basic.20230127T120753Z.RELEASE-2023", "NEON.D01.HOPB.DP4.00130.001.sensor_positions.20230118T012115Z.csv"), format = "file"),
+  tar_target(neon_flow_stn_file, file.path(data_dir, "obs", "neon", "NEON_discharge-continuous", "NEON.D01.HOPB.DP4.00130.001.2017-07.basic.20230127T120753Z.RELEASE-2023", "NEON.D01.HOPB.DP4.00130.001.sensor_positions.20230118T012115Z.csv"), format = "file"),
   tar_target(neon_flow_stn_raw, read_csv(neon_flow_stn_file, col_types = cols(.default = col_character()))),
   tar_target(neon_flow_stn, {
     neon_flow_stn_raw |>
@@ -99,7 +99,7 @@ targets_neon <- list(
       ) |>
       distinct()
   }),
-  tar_target(neon_flow_files, list.files(file.path(data_dir, "neon", "NEON_discharge-continuous"), recursive = TRUE, full.names = TRUE, pattern = "NEON.D01.HOPB.DP4.00130.001.*csd_continuousDischarge"), format = "file"),
+  tar_target(neon_flow_files, list.files(file.path(data_dir, "obs", "neon", "NEON_discharge-continuous"), recursive = TRUE, full.names = TRUE, pattern = "NEON.D01.HOPB.DP4.00130.001.*csd_continuousDischarge"), format = "file"),
   tar_target(neon_flow_raw, {
     tibble(
       filepath = neon_flow_files,

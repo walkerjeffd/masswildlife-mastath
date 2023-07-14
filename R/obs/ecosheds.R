@@ -69,7 +69,14 @@ left join agencies a on l.agency_id=a.id;"
   }),
   tar_target(ecosheds_stn_grouped, group_stations(ecosheds_stn_filtered$ecosheds_id, max_stations = 10), iteration = "group"),
   # tar_target(ecosheds_data, ecosheds_download(ecosheds_stn_grouped), pattern = map(ecosheds_stn_grouped)),
-  tar_target(ecosheds_data_file, "data/ecosheds.rds", format = "file"),
+  # tar_target(ecosheds_data_file, {
+  #   fname <- "data/obs/ecosheds.rds"
+  #   write_rds(ecosheds_data, fname)
+  #   fname
+  # }, format = "file"),
+  # NOTE: ecosheds data was manually cached to an rds file using the previous
+  #       two targets to avoid repeat database pulls
+  tar_target(ecosheds_data_file, "data/obs/ecosheds.rds", format = "file"),
   tar_target(ecosheds_data, read_rds(ecosheds_data_file)),
   tar_target(ecosheds_stn, {
     ecosheds_stn_filtered |>

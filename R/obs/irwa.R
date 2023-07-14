@@ -1,7 +1,7 @@
 tar_option_set(packages = c("tidyverse", "janitor", "units"))
 
 targets_irwa <- list(
-  tar_target(irwa_howlett_stn_xlsx_file, file.path("data", "irwa", "howlett", "Howlett Monitoring Sites.xlsx"), format = "file"),
+  tar_target(irwa_howlett_stn_xlsx_file, file.path("data", "obs", "irwa", "howlett", "Howlett Monitoring Sites.xlsx"), format = "file"),
   tar_target(irwa_howlett_stn, {
     readxl::read_excel(irwa_howlett_stn_xlsx_file) |>
       clean_names() |>
@@ -14,7 +14,7 @@ targets_irwa <- list(
         longitude
       )
   }),
-  tar_target(irwa_howlett_data_xlsx_files, list.files(file.path("data", "irwa", "howlett", "data"), full.names = TRUE, pattern = ".xlsx$"), format = "file"),
+  tar_target(irwa_howlett_data_xlsx_files, list.files(file.path("data", "obs", "irwa", "howlett", "data"), full.names = TRUE, pattern = ".xlsx$"), format = "file"),
   tar_target(irwa_howlett_data, {
     tibble(
       file = irwa_howlett_data_xlsx_files,
@@ -41,7 +41,7 @@ targets_irwa <- list(
         by = "station_id"
       )
   }),
-  tar_target(irwa_ipswich_xlsx_file, file.path("data", "irwa", "ipswich", "Ipswich-Parker Continuous Temp. Data.xlsx"), format = "file"),
+  tar_target(irwa_ipswich_xlsx_file, file.path("data", "obs", "irwa", "ipswich", "Ipswich-Parker Continuous Temp. Data.xlsx"), format = "file"),
   tar_target(irwa_ipswich_xlsx_raw, {
     readxl::read_excel(irwa_ipswich_xlsx_file) |>
       clean_names() |>

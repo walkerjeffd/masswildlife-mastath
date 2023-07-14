@@ -25,7 +25,7 @@ get_streamstats <- function (latitude, longitude) {
   body
 }
 
-x <- read_csv("data/streamstats/stations.csv", show_col_types = FALSE) |>
+x <- read_csv("data/gis/streamstats/stations.csv", show_col_types = FALSE) |>
   mutate(
     streamstats = pmap(
       list(latitude, longitude),
@@ -34,4 +34,4 @@ x <- read_csv("data/streamstats/stations.csv", show_col_types = FALSE) |>
     )
   )
 
-write_rds(x, "data/streamstats/streamstats.rds")
+write_rds(x, "data/gis/streamstats/streamstats.rds")

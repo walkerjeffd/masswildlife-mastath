@@ -1,7 +1,7 @@
 tar_option_set(packages = c("tidyverse", "janitor", "units"))
 
 targets_crwa <- list(
-  tar_target(crwa_xlsx_file, file.path(data_dir, "crwa", "DEPupload_2022_ConductivityTemp.xlsx"), format = "file"),
+  tar_target(crwa_xlsx_file, file.path(data_dir, "obs", "crwa", "DEPupload_2022_ConductivityTemp.xlsx"), format = "file"),
   tar_target(crwa_raw, {
     readxl::read_excel(crwa_xlsx_file) |>
       clean_names()

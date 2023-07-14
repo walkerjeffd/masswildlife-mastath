@@ -1,7 +1,7 @@
 tar_option_set(packages = c("tidyverse", "janitor", "units", "sf"))
 
 targets_hrf <- list(
-  tar_target(hrf_stn_file, file.path(data_dir, "hrf", "hf375-03-points", "ltstudy-points-apr10.shp"), format = "file"),
+  tar_target(hrf_stn_file, file.path(data_dir, "obs", "hrf", "hf375-03-points", "ltstudy-points-apr10.shp"), format = "file"),
   tar_target(hrf_stn, {
     x <- tribble(
       ~station_id, ~name,                        ~type,   ~PLOT,
@@ -28,7 +28,7 @@ targets_hrf <- list(
       select(-PLOT) |>
       relocate(-c(latitude, longitude), .before = everything())
   }),
-  tar_target(hrf_day_file, file.path(data_dir, "hrf", "files", "hf070-03-daily.csv"), format = "file"),
+  tar_target(hrf_day_file, file.path(data_dir, "obs", "hrf", "files", "hf070-03-daily.csv"), format = "file"),
   tar_target(hrf_day, {
     read_csv(hrf_day_file, show_col_types = FALSE) |>
       distinct() |>
@@ -42,7 +42,7 @@ targets_hrf <- list(
         temp_c = wt
       )
   }),
-  tar_target(hrf_15min_file, file.path(data_dir, "hrf", "files", "hf070-04-15min.csv"), format = "file"),
+  tar_target(hrf_15min_file, file.path(data_dir, "obs", "hrf", "files", "hf070-04-15min.csv"), format = "file"),
   tar_target(hrf_15min, {
     read_csv(hrf_15min_file, show_col_types = FALSE) |>
       distinct() |>

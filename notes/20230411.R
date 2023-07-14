@@ -229,7 +229,7 @@ flow_nearest_temp_data <- flow_nearest_temp |>
   ) |>
   arrange(desc(n_days))
 
-pdf("pdf/flow-temp-day-ts.pdf", width = 17, height = 11)
+pdf("notes/20230411/flow-temp-day-ts.pdf", width = 17, height = 11)
 for (i in seq(1, nrow(flow_nearest_temp_data), by = 9)) {
   p <- wrap_plots(flow_nearest_temp_data$plot[i:min(nrow(flow_nearest_temp_data), i+8)])
   print(p)

@@ -1,7 +1,7 @@
-# export dataset
+# output dataset
 
-targets_export <- list(
-  tar_target(export_flowlines, {
+targets_output <- list(
+  tar_target(output_flowlines, {
     x_tair <- climate_proj |>
       filter(season == "summer") |>
       select(basin_id, year, starts_with("RCP85")) |>
@@ -36,25 +36,20 @@ targets_export <- list(
       rename(geometry = GEOMETRY) |>
       st_transform(4326)
   }),
-  tar_target(export_flowlines_gpkg_file, {
-    fname <- "data/export/mastath-flowlines.gpkg"
-    st_write(export_flowlines, fname, append = FALSE)
+  tar_target(output_flowlines_gpkg_file, {
+    fname <- "data/output/dataset/mastath-flowlines.gpkg"
+    st_write(output_flowlines, fname, append = FALSE)
     fname
   }, format = "file"),
-  # tar_target(export_flowlines_shp_file, {
-  #   fname <- "data/export/mastath-flowlines.shp"
-  #   st_write(export_flowlines, fname, append = FALSE)
-  #   fname
-  # }, format = "file"),
-  tar_target(export_flowlines_csv_file, {
-    fname <- "data/export/mastath-flowlines.csv"
-    export_flowlines |>
+  tar_target(output_flowlines_csv_file, {
+    fname <- "data/output/dataset/mastath-flowlines.csv"
+    output_flowlines |>
       st_drop_geometry() |>
       as_tibble() |>
       write_csv(fname)
     fname
   }, format = "file"),
-  tar_target(export_obs_stn, {
+  tar_target(output_obs_stn, {
     inp_day |>
       semi_join(lom_inp, by = "station_id") |>
       select(station_id, station_name, latitude, longitude, total_area_km2) |>
@@ -66,43 +61,52 @@ targets_export <- list(
       ) |>
       relocate(comid, .after = "station_id")
   }),
-  tar_target(export_obs_stn_file, {
-    fname <- "data/export/mastath-obs-stn.csv"
-    write_csv(export_obs_stn, fname)
+  tar_target(output_obs_stn_file, {
+    fname <- "data/output/dataset/mastath-obs-stn.csv"
+    write_csv(output_obs_stn, fname)
     fname
   }, format = "file"),
-  tar_target(export_obs_day, {
+  tar_target(output_obs_day, {
     inp_day |>
       semi_join(lom_inp, by = "station_id") |>
       select(station_id, data) |>
       unnest(data) |>
       arrange(station_id, date)
   }),
-  tar_target(export_obs_day_file, {
-    fname <- "data/export/mastath-obs-day.csv"
-    write_csv(export_obs_day, fname)
+  tar_target(output_obs_day_file, {
+    fname <- "data/output/dataset/mastath-obs-day.csv"
+    write_csv(output_obs_day, fname)
     fname
   }, format = "file"),
-  tar_target(export_obs_week, {
+  tar_target(output_obs_week, {
     inp_week |>
       semi_join(lom_inp, by = "station_id") |>
       select(station_id, data) |>
       unnest(data) |>
       arrange(station_id, date)
   }),
-  tar_target(export_obs_week_file, {
-    fname <- "data/export/mastath-obs-week.csv"
-    write_csv(export_obs_week, fname)
+  tar_target(output_obs_week_file, {
+    fname <- "data/output/dataset/mastath-obs-week.csv"
+    write_csv(output_obs_week, fname)
     fname
   }, format = "file"),
-  tar_target(export_xgb_file, {
-    fname <- "data/export/xgb-model.rds"
+  tar_target(output_xgb_file, {
+    fname <- "data/output/rds/xgb-model.rds"
     write_rds(xgb_fit, fname)
     fname
   }, format = "file"),
-  tar_target(export_lom_file, {
-    fname <- "data/export/lom-model.rds"
+  tar_target(output_lom_file, {
+    fname <- "data/output/rds/lom-model.rds"
     write_rds(lom_fit, fname)
     fname
-  }, format = "file")
+  }, format = "file"),
+  tar_target(output_obs_rds_file, {
+    fname <- "data/output/rds/obs.rds"
+    list(
+      stn = obs_stn,
+      data = obs_day
+    ) |>
+      write_rds(fname)
+    fname
+  })
 )

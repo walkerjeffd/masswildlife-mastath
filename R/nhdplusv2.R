@@ -1,7 +1,6 @@
 tar_option_set(packages = c("tidyverse", "janitor", "sf", "units", "glue", "patchwork", "arrow"))
 
 targets_nhdplusv2_prism <- list(
-  # tar_target(nhdplusv2_prism_1617_file, {})
   tar_target(nhdplusv2_prism_tav7100_file, file.path(nhdplusv2_attrs_dir, "climate", "prism-tav7100", "TAV7100_TOT_CONUS.TXT"), format = "file"),
   tar_target(nhdplusv2_prism_tav7100, {
     read_csv(nhdplusv2_prism_tav7100_file, show_col_types = FALSE) |>
@@ -35,7 +34,7 @@ targets_nhdplusv2_prism <- list(
 )
 
 targets_nhdplusv2_attrs <- list(
-  tar_target(nhdplusv2_attrs_dir, file.path(data_dir, "nhd", "nhdplusv2_attributes")),
+  tar_target(nhdplusv2_attrs_dir, file.path(data_dir, "gis", "nhdplusv2_attributes")),
   tar_target(nhdplusv2_attrs_bfi_file, file.path(nhdplusv2_attrs_dir, "hydrology", "bfi", "BFI_CONUS.txt"), format = "file"),
   tar_target(nhdplusv2_attrs_bfi, {
     read_csv(nhdplusv2_attrs_bfi_file, show_col_types = FALSE) |>
@@ -153,7 +152,7 @@ targets_nhdplusv2_attrs <- list(
 )
 
 targets_nhdplusv2 <- list(
-  tar_target(nhdplusv2_root_gis, file.path(data_dir, "../gis", "nhdplusv2")),
+  tar_target(nhdplusv2_root_gis, file.path(data_dir, "gis", "nhdplusv2")),
   tar_target(nhdplusv2_sf_flowlines, {
     bind_rows(
       st_read(file.path(nhdplusv2_root_gis, "NHDPlusNE", "NHDPlus01", "NHDSnapshot", "Hydrography", "NHDFlowline.shp")),
@@ -186,7 +185,7 @@ targets_nhdplusv2 <- list(
     )
   }),
   tar_target(nhdplusv2_gis_export, {
-    base_dir <- "data/nhdplusv2"
+    base_dir <- "data/gis/nhdplusv2"
     filenames <- c()
     for (x in names(nhdplusv2_sf)) {
       filename <- file.path(base_dir, paste0(x, ".shp"))
@@ -199,7 +198,7 @@ targets_nhdplusv2 <- list(
     filenames
   }, format = "file"),
 
-  tar_target(nhdplusv2_enhd_nhdplusatts_file, file.path(data_dir, "nhd", "enhd_nhdplusatts", "enhd_nhdplusatts.parquet"), format = "file"),
+  tar_target(nhdplusv2_enhd_nhdplusatts_file, file.path(data_dir, "gis", "enhd_nhdplusatts", "enhd_nhdplusatts.parquet"), format = "file"),
   tar_target(nhdplusv2_enhd_nhdplusatts, {
     read_parquet(nhdplusv2_enhd_nhdplusatts_file) |>
       filter(comid %in% nhdplusv2_sf_flowlines$COMID) |>

@@ -3,7 +3,7 @@
 tar_option_set(packages = c("tidyverse", "janitor", "sf", "units", "glue", "patchwork", "arrow", "tidymodels"))
 
 targets_app <- list(
-  tar_target(app_dir, "data/app"),
+  tar_target(app_dir, "data/output/app/"),
   tar_target(app_basins, {
     climate_huc8 |>
       st_simplify(preserveTopology = TRUE, dTolerance = 100) |>

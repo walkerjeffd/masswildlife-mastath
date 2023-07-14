@@ -1,13 +1,13 @@
 tar_option_set(packages = c("tidyverse", "janitor", "units"))
 
 targets_pie_lter <- list(
-  tar_target(pie_lter_stn_file, file.path(data_dir, "pie-lter", "stations.csv")),
+  tar_target(pie_lter_stn_file, file.path(data_dir, "obs", "pie-lter", "stations.csv")),
   tar_target(pie_lter_stn, {
     read_csv(pie_lter_stn_file, show_col_types = FALSE) |>
       rename(station_id = code) |>
       mutate(type = "stream", name = station_id)
   }),
-  tar_target(pie_lter_csv_files, list.files(file.path(data_dir, "pie-lter", "files"), full.names = TRUE), format = "file"),
+  tar_target(pie_lter_csv_files, list.files(file.path(data_dir, "obs", "pie-lter", "files"), full.names = TRUE), format = "file"),
   tar_target(pie_lter_csv, {
     tibble(
       filepath = pie_lter_csv_files,

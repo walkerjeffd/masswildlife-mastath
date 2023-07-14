@@ -1,7 +1,8 @@
 tar_option_set(packages = c("tidyverse", "janitor", "sf", "units", "glue", "patchwork"))
 
-targets_memo_data <- list(
-  tar_target(memo_data_obs, {
+targets_memo <- list(
+  tar_target(memo_dir, "data/output/memo"),
+  tar_target(memo_obs, {
     bind_rows(
       flow = flow_day,
       temp = temp_day,
@@ -20,22 +21,22 @@ targets_memo_data <- list(
         source = fct_inorder(source)
       )
   }),
-  tar_target(memo_data_tbl_obs_tally_file, {
-    filename <- "memo/data/obs-tally.csv"
-    memo_data_obs |>
+  tar_target(memo_tbl_obs_tally_file, {
+    filename <- file.path(memo_dir, "obs-tally.csv")
+    memo_obs |>
       tabyl(source, dataset) |>
       write_csv(filename)
     filename
   }, format = "file"),
-  tar_target(memo_data_fig_map_stn, {
-    x <- memo_data_obs |>
+  tar_target(memo_fig_map_stn, {
+    x <- memo_obs |>
       rowwise() |>
       mutate(
         n_year = length(unique(year(data$date)))
       ) |>
       st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
     ggplot() +
-      geom_sf(data = gis_states, fill = NA) +
+      geom_sf(data = gis_state, fill = NA) +
       geom_sf(
         data = filter(x, source == "EcoSHEDS"),
         aes(size = n_year, fill = source), shape = 21, alpha = 0.35
@@ -59,13 +60,13 @@ targets_memo_data <- list(
       ) +
       theme_bw()
   }),
-  tar_target(memo_data_fig_map_stn_file, {
-    filename <- file.path("memo", "data", "fig-map-stn.png")
-    ggsave(filename, plot = memo_data_fig_map_stn, width = 8, height = 8)
+  tar_target(memo_fig_map_stn_file, {
+    filename <- file.path(memo_dir, "fig-map-stn.png")
+    ggsave(filename, plot = memo_fig_map_stn, width = 8, height = 8)
     filename
   }, format = "file"),
-  tar_target(memo_data_obs_tally_year, {
-    memo_data_obs |>
+  tar_target(memo_obs_tally_year, {
+    memo_obs |>
       filter(nrow(data) > 0) |>
       rowwise() |>
       mutate(
@@ -81,8 +82,8 @@ targets_memo_data <- list(
       arrange(desc(start), n_years) |>
       mutate(station_id = fct_inorder(station_id))
   }),
-  tar_target(memo_data_fig_cdf_years, {
-    memo_data_obs_tally_year |>
+  tar_target(memo_fig_cdf_years, {
+    memo_obs_tally_year |>
       ungroup() |>
       ggplot(aes(n_years)) +
       stat_ecdf(pad = TRUE, direction = "hv", aes(color = dataset)) +
@@ -92,13 +93,13 @@ targets_memo_data <- list(
       labs(x = "# Years of Data", y = "Cumulative Frequency") +
       theme_bw()
   }),
-  tar_target(memo_data_fig_cdf_years_file, {
-    filename <- file.path("memo", "data", "fig-cdf-years.png")
-    ggsave(filename, plot = memo_data_fig_cdf_years, width = 6, height = 4)
+  tar_target(memo_fig_cdf_years_file, {
+    filename <- file.path(memo_dir, "fig-cdf-years.png")
+    ggsave(filename, plot = memo_fig_cdf_years, width = 6, height = 4)
     filename
   }, format = "file"),
-  tar_target(memo_data_fig_period, {
-    memo_data_obs_tally_year |>
+  tar_target(memo_fig_period, {
+    memo_obs_tally_year |>
       unnest(data) |>
       filter(dataset == "temp") |>
       # filter(n_years >= 5) |>
@@ -113,18 +114,18 @@ targets_memo_data <- list(
         panel.grid.major.y = element_blank()
       )
   }),
-  tar_target(memo_data_stn_paired, {
+  tar_target(memo_stn_paired, {
     # NAD83 / Massachusetts Mainland
     # https://epsg.io/26986
     # meters
-    sf_flow <- memo_data_obs |>
+    sf_flow <- memo_obs |>
       ungroup() |>
       filter(dataset == "flow") |>
       select(-dataset) |>
       rename_with(\(x) str_c("flow_", x), -c(latitude, longitude)) |>
       st_as_sf(coords = c("longitude", "latitude"), crs = 4326) |>
       st_transform(crs = 26986)
-    sf_temp <- memo_data_obs |>
+    sf_temp <- memo_obs |>
       ungroup() |>
       filter(dataset == "temp") |>
       select(-dataset) |>
@@ -151,8 +152,8 @@ targets_memo_data <- list(
       ) |>
       filter(n_paired_values > 100)
   }),
-  tar_target(memo_data_fig_stn_paired_distance, {
-    memo_data_stn_paired |>
+  tar_target(memo_fig_stn_paired_distance, {
+    memo_stn_paired |>
       ggplot(aes(distance_m)) +
       stat_ecdf(pad = TRUE) +
       scale_x_continuous(expand = expansion(0.01), breaks = scales::pretty_breaks(n = 10)) +
@@ -165,13 +166,13 @@ targets_memo_data <- list(
       labs(x = "Distance from Flow Station to\nNearest Temperature Station (m)") +
       theme_bw()
   }),
-  tar_target(memo_data_fig_stn_paired_distance_file, {
-    filename <- file.path("memo", "data", "fig-stn-paired-distance.png")
-    ggsave(filename, plot = memo_data_fig_stn_paired_distance, width = 6, height = 4)
+  tar_target(memo_fig_stn_paired_distance_file, {
+    filename <- file.path(memo_dir, "fig-stn-paired-distance.png")
+    ggsave(filename, plot = memo_fig_stn_paired_distance, width = 6, height = 4)
     filename
   }, format = "file"),
-  tar_target(memo_data_fig_stn_paired_duration, {
-    memo_data_stn_paired |>
+  tar_target(memo_fig_stn_paired_duration, {
+    memo_stn_paired |>
       mutate(
         n_paired_years = length(unique(year(data$date)))
       ) |>
@@ -188,19 +189,19 @@ targets_memo_data <- list(
       labs(x = "# Years of Overlapping Data") +
       theme_bw()
   }),
-  tar_target(memo_data_fig_stn_paired_duration_file, {
-    filename <- file.path("memo", "data", "fig-stn-paired-duration.png")
-    ggsave(filename, plot = memo_data_fig_stn_paired_duration, width = 6, height = 4)
+  tar_target(memo_fig_stn_paired_duration_file, {
+    filename <- file.path(memo_dir, "fig-stn-paired-duration.png")
+    ggsave(filename, plot = memo_fig_stn_paired_duration, width = 6, height = 4)
     filename
   }, format = "file"),
-  tar_target(memo_data_fig_map_stn_paired, {
-    memo_data_stn_paired |>
+  tar_target(memo_fig_map_stn_paired, {
+    memo_stn_paired |>
       mutate(n_paired_years = length(unique(year(data$date)))) |>
       filter(distance_m < 100) |>
       select(-temp_geometry) |>
       st_transform(crs = 4326) |>
       ggplot() +
-      geom_sf(data = gis_states, fill = NA) +
+      geom_sf(data = gis_state, fill = NA) +
       geom_sf(
         aes(size = n_paired_years, fill = flow_source), shape = 21, alpha = 0.5
       ) +
@@ -211,13 +212,13 @@ targets_memo_data <- list(
       ) +
       theme_bw()
   }),
-  tar_target(memo_data_fig_map_stn_paired_file, {
-    filename <- file.path("memo", "data", "fig-map-stn-paired.png")
-    ggsave(filename, plot = memo_data_fig_map_stn_paired, width = 8, height = 4)
+  tar_target(memo_fig_map_stn_paired_file, {
+    filename <- file.path(memo_dir, "fig-map-stn-paired.png")
+    ggsave(filename, plot = memo_fig_map_stn_paired, width = 8, height = 4)
     filename
   }, format = "file"),
-  tar_target(memo_data_fig_ts_paired, {
-    x <- memo_data_stn_paired |>
+  tar_target(memo_fig_ts_paired, {
+    x <- memo_stn_paired |>
       filter(distance_m < 100) |>
       rowwise() |>
       mutate(
@@ -244,10 +245,10 @@ targets_memo_data <- list(
         })
       )
   }),
-  tar_target(memo_data_fig_ts_paired_file, {
-    x <- memo_data_fig_ts_paired |>
+  tar_target(memo_fig_ts_paired_file, {
+    x <- memo_fig_ts_paired |>
       arrange(desc(n_paired_values))
-    filename <- "memo/data/ts-paired.pdf"
+    filename <- file.path(memo_dir, "ts-paired.pdf")
     pdf(filename, width = 17, height = 11)
     for (i in seq(1, nrow(x), by = 9)) {
       p <- wrap_plots(x$plot[i:min(nrow(x), i+8)])

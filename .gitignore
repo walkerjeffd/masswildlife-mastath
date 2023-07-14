@@ -4,6 +4,7 @@
 .Ruserdata
 .env
 
-data/**/*.xlsx
-pdf/**/*.pdf
-memo
+data/**/*.*
+!data/**/.gitkeep
+notes/**/*.pdf
+notes/**/*.csv
