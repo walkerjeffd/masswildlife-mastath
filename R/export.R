@@ -20,9 +20,7 @@ targets_export <- list(
       ) |>
       left_join(
         app_dataset |>
-          rename(BASE = BASE_Q10) |>
-          select(-c(BASE_Q50, BASE_Q90)) |>
-          rename_with(\(x) str_c("TEMP_JUL_", x), .cols = -c("COMID", "basin_id")),
+          rename_with(\(x) str_c("TEMP_JUL_", x), .cols = -c("COMID", "GNIS_NAME", "basin_id")),
         by = "COMID"
       ) |>
       left_join(
@@ -32,7 +30,7 @@ targets_export <- list(
       ) |>
       left_join(x_tair, by = "basin_id") |>
       relocate(starts_with("TEMP_"), geometry, .after = everything()) |>
-      relocate(basin_id, basin, huc8, .after = "COMID") |>
+      relocate(GNIS_NAME, basin_id, basin, huc8, .after = "COMID") |>
       rename(GEOMETRY = geometry) |>
       rename_with(toupper) |>
       rename(geometry = GEOMETRY) |>
@@ -95,6 +93,16 @@ targets_export <- list(
   tar_target(export_obs_week_file, {
     fname <- "data/export/mastath-obs-week.csv"
     write_csv(export_obs_week, fname)
+    fname
+  }, format = "file"),
+  tar_target(export_xgb_file, {
+    fname <- "data/export/xgb-model.rds"
+    write_rds(xgb_fit, fname)
+    fname
+  }, format = "file"),
+  tar_target(export_lom_file, {
+    fname <- "data/export/lom-model.rds"
+    write_rds(lom_fit, fname)
     fname
   }, format = "file")
 )

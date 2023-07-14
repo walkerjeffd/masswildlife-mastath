@@ -28,7 +28,7 @@ targets_app <- list(
       ) |>
       mutate(
         across(
-          -c(COMID, basin_id, geometry),
+          -c(COMID, GNIS_NAME, basin_id, geometry),
           \(x) round(x, digits = 2)
         )
       )
@@ -49,6 +49,15 @@ targets_app <- list(
         year = fct_recode(year, BASE = "Baseline")
       ) |>
       unite(name, c("year", "prob")) |>
-      pivot_wider()
+      pivot_wider() |>
+      select(-BASE_Q10, -BASE_Q90) |>
+      rename(BASE = BASE_Q50) |>
+      left_join(
+        nhdplusv2_flowline |>
+          st_drop_geometry() |>
+          select(COMID, GNIS_NAME),
+        by = "COMID"
+      ) |>
+      relocate(GNIS_NAME, .after = COMID)
   })
 )
