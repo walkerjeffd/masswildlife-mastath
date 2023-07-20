@@ -7,4 +7,5 @@
 data/**/*.*
 !data/**/.gitkeep
 notes/**/*.pdf
+notes/**/*.png
 notes/**/*.csv
