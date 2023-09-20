@@ -72,5 +72,5 @@ values |>
 
 summary(values)
 
-write_csv(stn, "~/tmp/ma-obs-paired-stn.csv")
-write_csv(values, "~/tmp/ma-obs-paired-day.csv")
+write_csv(stn, "notes/20230905/ma-obs-paired-stn.csv")
+write_csv(values, "notes/20230905/ma-obs-paired-day.csv")
